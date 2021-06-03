@@ -183,7 +183,7 @@ After completing the task, commit your changes to git using a good commit messag
 
 <!-- Just like we did with `speed` in tasks 2 - 4, we could do the same with turning angles of the trajectory. If you like a challenge, try to calculate these with the same approach! Warning: this task is pretty complex. Note, as this task is optional, you don't have to include it in your mandatory submission of Exercise 2! -->
 
-<!-- ```{r, code =  mydecrypt("12_Week2/solutions/task_5.R",".passphrase"), opts.label="solution_hideOutput"} -->
+<!-- ```{r, code =  mydecrypt("12_Week2/task_5.R",".passphrase"), opts.label="solution_hideOutput"} -->
 <!-- ``` -->
 
 
