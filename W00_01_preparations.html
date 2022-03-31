@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data</title>
+  <meta name="description" content="1 Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="ComputationalMovementAnalysis/FS21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
+  
+  
+  
+
+<meta name="author" content="Patrick Laube, Nils Ratnaweera, Nikolaos Bakogiannis" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="W01_01_exercise.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="90_misc/mystyle.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<img src="02_Images/zhaw_lsfm_schwarz.png" alt="ZHAW Logo" width="300">
+
+<li class="divider"></li>
+<li><a href="index.html#welcome-to-the-course">Welcome to the course!<span></span></a>
+<ul>
+<li><a href="index.html#license">License<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html"><i class="fa fa-check"></i><b>1</b> Preparation<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html#check-you-version-of-r"><i class="fa fa-check"></i><b>1.1</b> Check you version of <code>R</code><span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html#check-your-version-of-rstudio"><i class="fa fa-check"></i><b>1.2</b> Check your version of RStudio<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html#install-the-necessary-packages"><i class="fa fa-check"></i><b>1.3</b> Install the necessary packages<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html#install-git"><i class="fa fa-check"></i><b>1.4</b> Install Git<span></span></a></li>
+<li class="chapter" data-level="1.5" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html#configure-rstudio"><i class="fa fa-check"></i><b>1.5</b> Configure RStudio<span></span></a></li>
+<li class="chapter" data-level="1.6" data-path="W00_01_preparations.html"><a href="W00_01_preparations.html#introduce-yourself-git"><i class="fa fa-check"></i><b>1.6</b> Introduce yourself to Git<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="W01_01_exercise.html"><a href="W01_01_exercise.html"><i class="fa fa-check"></i><b>2</b> Exercise 1<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="W01_03_Slides.html"><a href="W01_03_Slides.html"><i class="fa fa-check"></i><b>2.1</b> Slides<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="W01_04_preparation.html"><a href="W01_04_preparation.html"><i class="fa fa-check"></i><b>2.2</b> Preperation<span></span></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="W01_04_preparation.html"><a href="W01_04_preparation.html#folder-structure"><i class="fa fa-check"></i><b>2.2.1</b> Folder structure for this course<span></span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="W01_04_preparation.html"><a href="W01_04_preparation.html#create-an-rstudio-project-for-the-first-week"><i class="fa fa-check"></i><b>2.2.2</b> Create an RStudio <em>project</em> for the first week<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html"><i class="fa fa-check"></i><b>2.3</b> Tasks and inputs<span></span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#task-1-import-data"><i class="fa fa-check"></i><b>2.3.1</b> Task 1: Import data<span></span></a></li>
+<li class="chapter" data-level="2.3.2" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#task-2-explore-data"><i class="fa fa-check"></i><b>2.3.2</b> Task 2: Explore Data<span></span></a></li>
+<li class="chapter" data-level="2.3.3" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#input-handling-spatial-data"><i class="fa fa-check"></i><b>2.3.3</b> Input: Handling spatial data<span></span></a></li>
+<li class="chapter" data-level="2.3.4" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#task-3-project-data-from-wgs84"><i class="fa fa-check"></i><b>2.3.4</b> Task 3: Project data from WGS84<span></span></a></li>
+<li class="chapter" data-level="2.3.5" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#input-calculate-convex-hull"><i class="fa fa-check"></i><b>2.3.5</b> Input: Calculate Convex Hull<span></span></a></li>
+<li class="chapter" data-level="2.3.6" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#task-4-ploting-spatial-objects"><i class="fa fa-check"></i><b>2.3.6</b> Task 4: Ploting spatial objects<span></span></a></li>
+<li class="chapter" data-level="2.3.7" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#w1-importing-raster"><i class="fa fa-check"></i><b>2.3.7</b> Input: Importing raster data<span></span></a></li>
+<li class="chapter" data-level="2.3.8" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#task-5-adding-a-background-map"><i class="fa fa-check"></i><b>2.3.8</b> Task 5: Adding a background map<span></span></a></li>
+<li class="chapter" data-level="2.3.9" data-path="W01_05_tasks_and_inputs.html"><a href="W01_05_tasks_and_inputs.html#task-6-create-an-interactive-map"><i class="fa fa-check"></i><b>2.3.9</b> Task 6: Create an interactive map<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br /></a>.
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Movement Analysis: Patterns and Trends in Environmental Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="w0-preparation" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Preparation<a href="W00_01_preparations.html#w0-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this course we will be using <code>R</code>, RStudio and Git. We ask you to install and/or update these programms <em>before</em> the start of the course, so that we do not loose time once the course starts. We cover the version number we expect you to have and provide some tips on how you should change your RStudio settings.</p>
+<div id="check-you-version-of-r" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Check you version of <code>R</code><a href="W00_01_preparations.html#check-you-version-of-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Check your Version of <code>R</code> by opening RStudio and typing the following command into the console.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="W00_01_preparations.html#cb1-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb1-2"><a href="W00_01_preparations.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;R version 4.1.3 (2022-03-10)&quot;</span></span></code></pre></div>
+<p>This returns the version number of your R installation, whereas the first digit (<code>4</code>) indicates the number of the <em>major release</em>, the second digit (<code>1</code>) indicates the <em>minor release</em> and the last digit (<code>3</code>) refers to the <em>patch release</em>. As a general rule of thumb, you will want to update R if you</p>
+<ul>
+<li>don’t have the current <em>major</em> version or</li>
+<li>are lagging two (or more) versions behind the current <em>minor release</em></li>
+</ul>
+<p>In the time of writing (March, 2022), the current <code>R</code> Version is 4.1.3 (released on 2022-03-10 08:05:38, see <a href="https://cran.r-project.org/">cran.r-project.org</a>). Your installation should therefore not be older than 4.0.0. If it is, make sure that you have updated R until next week (doing it now will probably take too long). Check <a href="https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/">these instructions on how to update R</a></p>
+</div>
+<div id="check-your-version-of-rstudio" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Check your version of RStudio<a href="W00_01_preparations.html#check-your-version-of-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RStudio is the Graphical User Interface (GUI) we use in our course to interact with R. RStudio should not be too old either and we recommend updating if you don’t have the latest version: check if this is the case by clicking on <em>help &gt; check for updates</em>. If you need to update RStudio, don’t update now but have a newer version of RStudio installed before next week.</p>
+</div>
+<div id="install-the-necessary-packages" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Install the necessary packages<a href="W00_01_preparations.html#install-the-necessary-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you haven’t already, install the packages <code>tidyverse</code>, <code>sf</code> and <code>terra</code>(using <code>install.packages()</code>).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="W00_01_preparations.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb2-2"><a href="W00_01_preparations.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb2-3"><a href="W00_01_preparations.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span>
+<span id="cb2-4"><a href="W00_01_preparations.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb2-5"><a href="W00_01_preparations.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb2-6"><a href="W00_01_preparations.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;terra&quot;</span>)</span></code></pre></div>
+</div>
+<div id="install-git" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Install Git<a href="W00_01_preparations.html#install-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Next, install Git. There are different Git installers to choose from, we recommend the following:</p>
+<!-- If you are not sure whether you already have Git installed or not, you can verify this by typing `git --version` in the terminal. If this command returns a version number you have Git installed already and might only need to update it. If this command returns `git: command not found` (or something similar), you will need to install Git first. -->
+<ul>
+<li><strong>Windows</strong>:
+<ul>
+<li>We recommend installing <a href="https://gitforwindows.org/">Git for Windows</a>, also known as <code>msysgit</code> or “Git Bash”.</li>
+<li>When asked about “Adjusting your PATH environment”, select “Git from the command line and also from 3rd-party software”</li>
+<li>RStudio prefers Git to be installed in <code>C:/Program Files/Git</code>, we recommend following this convention</li>
+<li>Otherwise, we believe it is good to accept the defaults</li>
+</ul></li>
+<li><strong>macOS</strong>:
+<ul>
+<li>We recommend you install the Xcode command line tools (not all of Xcode), which includes Git</li>
+<li>Go to the shell and enter <code>xcode-select --install</code> to install developer command line tools</li>
+</ul></li>
+<li><strong>Linux</strong>:
+<ul>
+<li>On Ubuntu or Debian Linux: <code>sudo apt-get install git</code></li>
+<li>On Fedora or RedHat Linux: <code>sudo yum install git</code></li>
+</ul></li>
+</ul>
+<p>Much of this chapter was taken from <span class="citation">Bryan and Heister (<a href="W01_05_tasks_and_inputs.html#ref-bryan2021" role="doc-biblioref">2021</a>)</span>. If you want to dive deeper into using Git, we highly recommend this book. For an <em>even</em> deeper dive into Git, read <span class="citation">Chacon and Straub (<a href="W01_05_tasks_and_inputs.html#ref-chacon2014" role="doc-biblioref">2014</a>)</span>. Both books are available free and open source on <a href="https://happygitwithr.com/">happygitwithr.com</a> and <a href="https://git-scm.com/book/">git-scm.com/book</a>, respectively.</p>
+</div>
+<div id="configure-rstudio" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Configure RStudio<a href="W00_01_preparations.html#configure-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we will set some RStudio Global options. But first, <strong>close all instances of RStudio and restart it (!!!)</strong>. Then go to Tools &gt; Global options.</p>
+<ul>
+<li><strong>R General</strong>
+<ul>
+<li>Deactivate the option “Restore .RData into workspace at startup”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li>Set “Save workspace to .RData on exit” to “Never”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+</ul></li>
+<li><strong>Git / SVN</strong>
+<ul>
+<li>Activate the option “Enable version control interface for RStudio projects”</li>
+<li>If the Field “Git executable:” shows <code>(Not Found)</code>, browse to your git installation (previous step). This path should look something like this:
+<ul>
+<li>Windows: <code>C:/Program Files/Git/bin/git.exe</code> (<strong>not</strong> <code>C:/Program Files/Git/cmd/git.exe</code> or <code>some-path/git-bash.exe</code>)</li>
+<li>Linux / macOS: <code>/usr/bin/git</code></li>
+</ul></li>
+</ul></li>
+<li><strong>Terminal</strong>
+<ul>
+<li>Set option “New terminals open with” to “Git Bash”</li>
+</ul></li>
+</ul>
+<p>Click on “Ok” to apply the change and close the options menu.</p>
+</div>
+<div id="introduce-yourself-git" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Introduce yourself to Git<a href="W00_01_preparations.html#introduce-yourself-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now it is time to introduce yourself to git. For this, we need to use the shell terminal, which is why we are going to spend a few word on the shell first.</p>
+<p>The shell is a program on your computer whose job is to run other programs. It looks very much like the <code>R</code>-console (in the bottom left of RStudio) that you are already know: You have a place to input text which is transferred to (and interpreted by) the computer when you press “enter”. RStudio has a shell terminal right next to the <code>R</code>-console (tab <code>Terminal</code>).</p>
+<p>Every Windows comes with two different shell installations: “Command prompt” and “PowerShell”. After installing Git we now have a third option, “Git Bash”. The shell terminal in RStudio uses “Command prompt” per default, in <a href="W00_01_preparations.html#configure-rstudio">the last step</a> we just switched the shell to “Git Bash”.</p>
+<p>Now use the terminal in RStudio to introduce yourself:</p>
+<pre><code>git config --global user.name &quot;Maria Nusslinger&quot;
+git config --global user.email &quot;nussmar@email.com&quot;</code></pre>
+<p>Of course, replace the name and address with your credentials. Use the email address that you will use to create your Git<em>hub</em> account (which we will do next week).</p>
+<p><strong>Note to users who already have a Github account:</strong></p>
+<p>If you already have a Github account and don’t want to associate the work you do in this course with said account, we recommend the following approach:</p>
+<ol style="list-style-type: decimal">
+<li>Create a new Github account with a different mailaddress (e.g. your student mail address)</li>
+<li>Override your <code>user.name</code> and <code>user.email</code> on a per project basis (by omitting the <code>--global</code> flag)</li>
+</ol>
+<p>Please feel free to contact us if you have questions about this.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>We recommend that you start each RStudio session with a blank slate, as recommended by <span class="citation">Wickham and Grolemund (<a href="W01_05_tasks_and_inputs.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> see <a href="https://r4ds.had.co.nz/workflow-projects.html">here</a><a href="W00_01_preparations.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>If we don’t restore the workspace at startup, there is no need to save it on exit.<a href="W00_01_preparations.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+<script src="https://utteranc.es/client.js"
+        repo="ComputationalMovementAnalysis/utterances"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="W01_01_exercise.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ComputationalMovementAnalysis/FS21/edit/master/W00_01_preparations.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ComputationalMovementAnalysis/FS21/blob/master/W00_01_preparations.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
