@@ -1,4 +1,4 @@
-## Preparation
+## Preparation {#w1-preparation}
 
 ### Folder structure for this course {#folder-structure}
 
@@ -12,7 +12,6 @@ By this point, you probably have created a folder for this course somewhere on y
 
 ```
 Course Folder (C:\\Users\\yourname\\semester1\\Modul_CMA)
- ¦--week0                                                
  ¦--week1                                                
  ¦--week2                                                
  ¦--week3                                                
@@ -23,14 +22,14 @@ Course Folder (C:\\Users\\yourname\\semester1\\Modul_CMA)
 ```
 
 
-For the R-exercises that take place in weeks 0 to 5, we recommend that you create a new RStudio Project each week in subdirectory of the appropriate week. For example, this week your folder structure could look like this: 
+For the R-exercises that take place in weeks 1 to 5, we recommend that you create a new RStudio Project each week in subdirectory of the appropriate week. For example, this week your folder structure could look like this: 
 
 
 
 
 
 ```
-Folder Week 0 (C:\\Users\\yourname\\semester2\\Modul_CMA\\week1)
+Folder Week 1 (C:\\Users\\yourname\\semester2\\Modul_CMA\\week1)
  ¦--slides.pdf                                                  
  ¦--my_notes.docx                                               
  ¦--seminar_screenshot.jpg                                      
@@ -43,8 +42,8 @@ Folder Week 0 (C:\\Users\\yourname\\semester2\\Modul_CMA\\week1)
 
 Note: 
 
-- the RStudio Project is located in a subfolder of `` and named `week0-rexercise`.
-- `week0-rexercise` is the project's *directory name* and the *project name*
+- the RStudio Project is located in a subfolder of `` and named `week1-rexercise`.
+- `week1-rexercise` is the project's *directory name* and the *project name*
 - we realize that that the week number is redundant, there is a reason[^redundancy] for this
 - this means each week is a fresh start (which has pros and cons)
 
@@ -57,7 +56,7 @@ Note:
 Create a new *RStudio Project* (File > New Project > New Directory > New Project). 
 
 1. Click on "Browse" and switch to *your equivalent* of the folder `` (the project we are about to initiate will be be created in a subdirectory of this folder). Click on "open" to confirm the selection
-2. In the field "Directory name", type `week0-rexercise`. This will be the name of your RStudio project and it's parent directory.
+2. In the field "Directory name", type `week1-rexercise`. This will be the name of your RStudio project and it's parent directory.
 3. Check the option "Create a git repository"
 4. Click on "Create Project"
 

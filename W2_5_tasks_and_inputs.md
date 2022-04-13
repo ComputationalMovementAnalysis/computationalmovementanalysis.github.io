@@ -3,8 +3,8 @@
 
 
 
-- Open the RStudio Project you created for week 2 in [the preparation](#w2-project)
-- Download the new wildboar movement data, and save it to your new project's directory [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/wildschwein_BE_2056.csv) (right click "Save target as..")
+- Open the RStudio Project you created for week 2 in [the preparation](#w2-preparation)
+- Download the new wildboar movement data, and save it to your new project's directory [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/wildschwein_BE_2056.csv) (right click "Save target as..")
 - Now, commit your changes to your repo like we did [last week](#w1-tasks-and-inputs) (see below):
 
 \BeginKnitrBlock{rmdtip}<div class="rmdtip">1. Save your (R/RMarkdown) file
@@ -14,13 +14,11 @@
 5. Add a commit message to explain what you are committing (e.g. "`initial commit`")
 6. Click on "commit" to commit your changes</div>\EndKnitrBlock{rmdtip}
 
+To push your changes from our local repo on your computer to the remote repo on Github, simply click the green button "Push" in the Git tab in RStudio. Now take a look at your repository on github.com. Do you see the new files there? Contact us if this does not work.
 
-- Pushing our changes from our local repo the remote repo on Github
-  - Simply click the green button "Push" in the Git tab in RStudio. 
-  - Have a look at your remote Repository on Github (`https://github.com/YOUR-GITHUB-USERNAME/cma-week2`). Do you see the new files there? Contact us if this does not work.
-  - **Note**: You do not need to push your changes to your remote repo after every commit. It's enough if you do this every few commits.
+**Note**: You do not need to push your changes to your remote repo after every commit. It's enough if you do this every few commits.
 
-### Task 0: Import your data
+### Task 1: Import your data
 
 Create a new R- (or RMarkdown-) file and begin with the following lines of code (adjust the path to your csv file accordingly).
 
@@ -48,7 +46,7 @@ Note:
 - the coordinates are stored in the columns (`E`/`N`)
 - setting `remove =  FALSE` preserves the original (`E`/`N`) columns, which come in handy later on
 
-### Task 1: Getting an overview
+### Task 2: Getting an overview
 
 Calculate the time difference between subsequent rows as described in the demo. You can calculate the time difference using the function `difftime()` in combination with `lead()`. 
 
@@ -72,7 +70,7 @@ After completing the task, commit your changes to git using a good commit messag
 <img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-3-2.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-3-3.png" width="672" />
 
 
-### Task 2: Deriving movement parameters I: Speed {#w2-task2}
+### Task 3: Deriving movement parameters I: Speed {#w2-task2}
 
 In this task we will derive some additional movement parameters from our trajectories. So far our trajectories only consist of a list of time-stamped spatial locations. So let's calculate the animal's steplength based on the Euclidean distance between two subsequent locations. 
 
@@ -94,16 +92,16 @@ After completing the task, commit your changes to git using a good commit messag
 
 
 
-### Task 3: Cross-scale movement analysis
+### Task 4: Cross-scale movement analysis
 
 @laube2011 analyse animal movement across different scales (see below). In their paper, the authors suggest reducing the granularity of the data by subsetting the data to every n^th^ element. We will do the same on a dataset that includes 200 locations of a single wild boar with a constant sampling interval of 60 seconds. 
 
 <div class="figure">
-<img src="02_Images/laube_2011_2.jpg" alt="Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)" width="705" />
+<img src="02_Images/laube_2011_2.jpg" alt="Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)"  />
 <p class="caption">(\#fig:unnamed-chunk-5)Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)</p>
 </div>
 
-Download this dataset here: [caro60.csv](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/caro60.csv) (right click: save target as..). Import it just like you imported the other wild boar data and save it to a new variable named `caro` (note that the locations are stored in EPSG 2056).
+Download this dataset here: [caro60.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/caro60.csv) (right click: save target as..). Import it just like you imported the other wild boar data and save it to a new variable named `caro` (note that the locations are stored in EPSG 2056).
 
 Now manually reduce the granularity of our sampling interval by selecting every 3^rd^, 6^th^ and 9^th^ position and save the output to `caro_3`, `caro_6`,`caro_9` accordingly.
 
@@ -133,7 +131,7 @@ After completing the task, commit your changes to git using a good commit messag
 
 
 ```
-## # A tibble: 67 x 6
+## # A tibble: 67 × 6
 ##    TierID TierName CollarID DatetimeUTC                E        N
 ##    <chr>  <chr>       <dbl> <dttm>                 <dbl>    <dbl>
 ##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589. 1205095.
@@ -146,13 +144,13 @@ After completing the task, commit your changes to git using a good commit messag
 ##  8 010C   Caro        13973 2015-09-15 08:28:00 2570496. 1205094.
 ##  9 010C   Caro        13973 2015-09-15 08:31:00 2570497. 1205091.
 ## 10 010C   Caro        13973 2015-09-15 08:34:00 2570499. 1205091.
-## # ... with 57 more rows
+## # … with 57 more rows
 ```
 
 <img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-4.png" width="672" />
 
 
-### Task 4: Deriving movement parameters II: Rolling window functions
+### Task 5: Deriving movement parameters II: Rolling window functions
 
 
 A different approach would be to *smoothen* the derived parameters using a [moving window function](https://docs.wavefront.com/images/5sec_moving_window.png). The `zoo` package offers a variate of moving window functions (`roll_*`). Install this package, load it into the session and use the function `roll_mean()` to smooth the calculated speed. Familiarise yourself with this function by working on some dummy data, for example:

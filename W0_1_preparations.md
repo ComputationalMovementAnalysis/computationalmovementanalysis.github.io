@@ -1,6 +1,6 @@
 # Preparation {#w0-preparation}
 
-In this course we will be using `R`, RStudio and Git. We ask you to install and/or update these programms *before* the start of the course, so that we do not loose time once the course starts. We cover the version number we expect you to have and provide some tips on how you should change your RStudio settings. 
+In this course we will be using R, RStudio and Git. We ask you to install and/or update these programs *before* the start of the course, so that we do not loose time once the course starts. In this chapter, we cover the course requirements and some tips on how you should change your RStudio settings. 
 
 
 
@@ -8,9 +8,10 @@ In this course we will be using `R`, RStudio and Git. We ask you to install and/
 
 
 
-## Check you version of `R`
+## Install or update R
 
-Check your Version of `R` by opening RStudio and typing the following command into the console. 
+If you haven't installed R yet, do so now by getting the newest version from [CRAN](https://cran.r-project.org/). If you do have R installed, check your Version of `R` by opening RStudio and typing the following command into the console. 
+
 
 
 ```r
@@ -23,21 +24,26 @@ This returns the version number of your R installation, whereas the first digit 
 - don't have the current *major* version or
 - are lagging two (or more) versions behind the current *minor release*
 
-In the time of writing (April, 2022), the current `R` Version is 4.1.3 (released on 2022-03-10 08:05:38, see [cran.r-project.org](https://cran.r-project.org/)). Your installation should therefore not be older than 4.0.0. If it is, make sure that you have updated R until next week (doing it now will probably take too long). Check [these instructions on how to update R](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/)
+In the time of writing (April, 2022), the current `R` Version is 4.1.3 (released on 2022-03-10 08:05:38, see [cran.r-project.org](https://cran.r-project.org/)). Your installation should therefore not be older than 4.0.0. If it is, make sure that you have updated R before the course. Check [these instructions on how to update R](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/)
 
 
-## Check your version of RStudio
+## Install or update RStudio
 
-RStudio is the Graphical User Interface (GUI) we use in our course to interact with R. RStudio should not be too old either and we recommend updating if you don't have the latest version: check if this is the case by clicking on *help > check for updates*. If you need to update RStudio, don't update now but have a newer version of RStudio installed before next week. 
+RStudio is the IDE (integrated development environment) we use in our course to interact with R. There are good alternatives you can use, RStudio simply seems to be [the most popular choice](https://twitter.com/mdancho84/status/1502237075550392323). If you want to use your own IDE, please feel free to do so. However, we don't recommend this if you are a beginner.
+
+We recommend updating RStudio to the newest version before the course: check if this is the case by clicking on *help > check for updates*. 
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hey <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> community. I’m doing research - what is your favorite way to code in <a href="https://twitter.com/hashtag/R?src=hash&amp;ref_src=twsrc%5Etfw">#R</a>?</p>&mdash; Matt Dancho (Business Science) (@mdancho84) <a href="https://twitter.com/mdancho84/status/1502237075550392323?ref_src=twsrc%5Etfw">March 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
 
 
 ## Install the necessary packages
 
-If you haven't already, install the packages `tidyverse`, `sf` and `terra`(using `install.packages()`). 
+In the course, we will be needing the following packages (amongst others). Save time during the course by installing these upfront! Check if you can load the packages by calling `library(dplyr)` (note the missing `"`). 
 
 
 ```r
-install.packages("rmarkdown")
 install.packages("dplyr")
 install.packages("ggplot2")
 install.packages("readr")
@@ -49,10 +55,10 @@ install.packages("terra")
 
 ## Install Git{#install-git}
 
-Next, install Git. There are different Git installers to choose from, we recommend the following:
 
-<!-- If you are not sure whether you already have Git installed or not, you can verify this by typing `git --version` in the terminal. If this command returns a version number you have Git installed already and might only need to update it. If this command returns `git: command not found` (or something similar), you will need to install Git first. -->
+Git is a software dedicated to tracking changes in text files (e.g. R scripts). It's heavily used in the software industry as well as in the field of data science. In this course, we will teach use the basic functionalities of Git and combine it with the online portal Github.
 
+Therefore, the next step is to install Git. There are different Git installers to choose from, we recommend the following:
 
 - **Windows**: 
   - We recommend installing [Git for Windows](https://gitforwindows.org/), also known as `msysgit` or “Git Bash". 
@@ -65,7 +71,8 @@ Next, install Git. There are different Git installers to choose from, we recomme
 - **Linux**: 
   - On Ubuntu or Debian Linux: `sudo apt-get install git`
   - On Fedora or RedHat Linux: `sudo yum install git`
-  
+
+<!-- If you are not sure whether you already have Git installed or not, you can verify this by typing `git --version` in the terminal. If this command returns a version number you have Git installed already and might only need to update it. If this command returns `git: command not found` (or something similar), you will need to install Git first. -->  
 
 Much of this chapter was taken from @bryan2021. If you want to dive deeper into using Git, we highly recommend this book. For an *even* deeper dive into Git, read @chacon2014. Both books are available free and open source on [happygitwithr.com](https://happygitwithr.com/) and [git-scm.com/book](https://git-scm.com/book/), respectively.
 

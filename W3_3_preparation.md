@@ -4,17 +4,9 @@ We need to create a new RStudio Project with Git and Github this week. Last week
 
 In this next section, we will go through setting up Git and Github without the use of RStudio. It will take slightly longer than the setup we used last week. Also, you will be confronted with some additional jargon. 
 
-
-\BeginKnitrBlock{rmdimportant}<div class="rmdimportant">You now have two choices:
-
-1. Set up a new RStudio (with Git and Github) for this weeks exercises as described last week in [Step 3](#create-github-repo) and [Step 4](#w2-project) *or*
-2. Follow the instructions below to set up your RStudio Project with Git and Github with a slightly more complicated, but also more canonical way
-
-Either way: Report the URL of your new repo back to us via Moodle!</div>\EndKnitrBlock{rmdimportant}
-
 As additional ressources to learning Git, we highly recommend:
 
-- [The video tutorials by Corey Schafer](https://www.youtube.com/watch?v=HVsySz-h9r4&list=PL-osiE80TeTuRUfjRe54Eea17-YfnOOAx&ab_channel=CoreySchafer). For example, *[Git Tutorial for Beginners: Command-Line Fundamentals](https://youtu.be/HVsySz-h9r4)* gives a nice introduction to the command line
+- The video tutorials [by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTuRUfjRe54Eea17-YfnOOAx) or the very entertaining learning series [Git and Github for Poets](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV).
 - [Happy Git with Github for the useR](https://happygitwithr.com/) is an excellent, easy to read, openly available book, written specifically for students working with R and RStudio in data science and related fields
 
 
@@ -30,14 +22,13 @@ This will create a "normal" RStudio Project *without* Git version control (and c
 
 ### Step 2: Activate Git Version Control
 
-
 Activating Git Version Control for your project is one line of code. In your shell terminal, type the following command (which is what RStudio effectively does automatically when you activate the *Create a git repository* option while creating your project):
 
 ```
 git init
 ```
 
-You should get a message, saying `Initialized empty Git repository in C:/path/to/your/directory/.git/`. You will see this folder (named `.git`) in your project's root directory (check your "Files" pane ). If you don't see it there, click *Refresh file listing* (refresh symbol to the very right of the files pane). If you still dont see it, make hidden files visible (*Files pane > More > Show hidden files*)
+You should get a message, saying `Initialized empty Git repository in C:/path/to/your/directory/.git/`. You will see this folder (named `.git`) in your project's root directory (check your "Files" pane ). If you don't see it there, click *Refresh file listing* (refresh symbol to the very right of the files pane). If you still don't see it, make hidden files visible (*Files pane > More > Show hidden files*)
 
 To see the "Git" Pane in RStudio, reload RStudio either by restarting it or clicking on the name of your RStudio project in the top right corner of RStudio and selecting your project from the project list). 
 
@@ -49,7 +40,7 @@ In your Git pane, you will see that you do not have a branch yet, it says `(no b
 Branches are a way to have multiple versions of your project, which is especially useful if you want to do experiments that you are unsure about. We will not cover branches in this course, but it's important that you have heard of the term, since its considered to be Git's "Killer feature".
 
 Once you make your first commit, Git will automatically create a branch named `master`. Test this by committing the`.gitignore` and `...*.Rproj`-File. 
-`master` is just a convention for the main (and maybe only) version of your project. Since 2020, there are efforts to avoid offensive jargon in tech, including `master`. In this effort, Github has switched to using `main` as the name for the main branch, while Git still uses `master`. We can rename our `master` branch to `main` with the following line of code (note that you must have committed something first):
+`master` is just a convention for the main (and maybe only) version of your project. Since 2020, there are efforts to avoid offensive jargon in tech, including the term "master". In this effort, Github has switched to using `main` as the name for the main branch, while Git still uses `master`. We can rename our `master` branch to `main` with the following line of code (note that you must have committed something first):
 
 ```
 git branch -M main
@@ -61,18 +52,18 @@ git branch -M main
 Now create a Github Repository following the instructions from [last week](#create-github-repo). This time however, don't check `Add a README file`.
 Copy the https URL to your Github repo, which should look something like this: `https://github.com/YOUR-GITHUB-USERNAME/cma-week3.git`
 
+\BeginKnitrBlock{rmdimportant}<div class="rmdimportant">Report the URL of your new repo back to us via Moodle!</div>\EndKnitrBlock{rmdimportant}
+
 
 ### Step 5: Connect to Github
 
-To connect your (local) RStudio Project to Github, we have to set up our Github repo to be our so called "*remote*" repository. We could have multiple *remotes*, which is why we need to name it, and the convention is to call it `origin`. To createa a *remote* named `origin`, type the following command in your shell terminal:
+To connect your (local) RStudio Project to Github, we have to set up our Github repo to be our so called "*remote*" repository. We could have multiple *remotes*, which is why we need to name it, and the convention is to call it `origin`. To create a *remote* named `origin`, type the following command in your shell terminal:
 
 ```
 git remote add origin https://github.com/YOUR-GITHUB-USERNAME/cma-week3.git
 ```
 
-The first time we push to this *remote* repository, we need to specify the an upstream, so that future `git push` will be directed to the correct remote branch. We can to this with the `--set-upstream`[^setupstream]
-
-[^setupstream]: Synonymously you can use `-u` instead of `--set-upstream`.
+The first time we push to this *remote* repository, we need to specify the an upstream, so that future `git push` will be directed to the correct remote branch. We can to this with the `--set-upstream` (or `-u`)
 
 ```
 git push --set-upstream origin main

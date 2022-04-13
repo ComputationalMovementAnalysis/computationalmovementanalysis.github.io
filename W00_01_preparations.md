@@ -23,7 +23,7 @@ This returns the version number of your R installation, whereas the first digit 
 - don't have the current *major* version or
 - are lagging two (or more) versions behind the current *minor release*
 
-In the time of writing (März, 2022), the current `R` Version is 4.1.3 (released on 2022-03-10 08:05:38, see [cran.r-project.org](https://cran.r-project.org/)). Your installation should therefore not be older than 4.0.0. If it is, make sure that you have updated R until next week (doing it now will probably take too long). Check [these instructions on how to update R](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/)
+In the time of writing (March, 2022), the current `R` Version is 4.1.3 (released on 2022-03-10 08:05:38, see [cran.r-project.org](https://cran.r-project.org/)). Your installation should therefore not be older than 4.0.0. If it is, make sure that you have updated R until next week (doing it now will probably take too long). Check [these instructions on how to update R](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/)
 
 
 ## Check your version of RStudio
@@ -37,7 +37,6 @@ If you haven't already, install the packages `tidyverse`, `sf` and `terra`(using
 
 
 ```r
-install.packages("rmarkdown")
 install.packages("dplyr")
 install.packages("ggplot2")
 install.packages("readr")

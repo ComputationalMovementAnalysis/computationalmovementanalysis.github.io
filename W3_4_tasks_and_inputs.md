@@ -71,20 +71,20 @@ sabi <- sabi %>%
   ungroup() 
 
 sabi
-## # A tibble: 192 x 11
+## # A tibble: 192 × 11
 ##    TierID TierName CollarID DatetimeUTC                E       N nMinus2 nMinus1
 ##    <chr>  <chr>       <dbl> <dttm>                 <dbl>   <dbl>   <dbl>   <dbl>
-##  1 002A   Sabi        12275 2015-06-30 22:00:13 2569972.  1.21e6   NA      NA   
-##  2 002A   Sabi        12275 2015-06-30 22:16:06 2569975.  1.21e6   NA     271.  
-##  3 002A   Sabi        12275 2015-06-30 22:30:19 2570266.  1.21e6  573.    365.  
-##  4 002A   Sabi        12275 2015-06-30 22:45:13 2570208.  1.21e6  361.     80.5 
-##  5 002A   Sabi        12275 2015-06-30 23:00:10 2570247.  1.21e6  127.    186.  
-##  6 002A   Sabi        12275 2015-06-30 23:15:17 2570512.  1.21e6  703.    524.  
-##  7 002A   Sabi        12275 2015-06-30 23:30:38 2570684.  1.21e6  766.    247.  
-##  8 002A   Sabi        12275 2015-06-30 23:45:16 2570526.  1.21e6  229.    167.  
-##  9 002A   Sabi        12275 2015-07-01 00:00:10 2570532.  1.21e6  163.      9.33
-## 10 002A   Sabi        12275 2015-07-01 00:15:14 2570530.  1.21e6    8.98   15.4 
-## # ... with 182 more rows, and 3 more variables: nPlus1 <dbl>, nPlus2 <dbl>,
+##  1 002A   Sabi        12275 2015-07-01 00:00:10 2570532.  1.21e6    NA      NA  
+##  2 002A   Sabi        12275 2015-07-01 00:15:14 2570530.  1.21e6    NA      15.4
+##  3 002A   Sabi        12275 2015-07-01 00:30:11 2570676.  1.21e6   159.    155. 
+##  4 002A   Sabi        12275 2015-07-01 00:45:43 2570707.  1.21e6   177.     63.1
+##  5 002A   Sabi        12275 2015-07-01 01:00:20 2570656.  1.21e6    22.0    68.3
+##  6 002A   Sabi        12275 2015-07-01 01:15:59 2570850.  1.21e6   144.    204. 
+##  7 002A   Sabi        12275 2015-07-01 01:31:02 2570819.  1.21e6   173.     31.7
+##  8 002A   Sabi        12275 2015-07-01 01:45:37 2570863.  1.21e6   112.    112. 
+##  9 002A   Sabi        12275 2015-07-01 02:00:17 2570863.  1.21e6   137.     27.1
+## 10 002A   Sabi        12275 2015-07-01 02:15:13 2570891.  1.21e6    35.5    29.2
+## # … with 182 more rows, and 3 more variables: nPlus1 <dbl>, nPlus2 <dbl>,
 ## #   stepMean <dbl>
 ```
 
@@ -124,7 +124,7 @@ sabi_filter%>%
 
 If you haven't already done so open the RStudio Project [you have prepared](#w3-preparation) for this week.
 
-With the skills from the input above you can now implement the segmentation algorithm described in @laube2011 on the dataset [caro60.csv](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/caro60.csv). Download this dataset (right click > save target as...) and import it as a simple `data.frame` or `tibble` (you don't need an `sf`-object for today's task).
+With the skills from the input above you can now implement the segmentation algorithm described in @laube2011 on the dataset [caro60.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/caro60.csv). Download this dataset (right click > save target as...) and import it as a simple `data.frame` or `tibble` (you don't need an `sf`-object for today's task).
 
 The sampling interval for this dataset is 1 minute. Use a temporal window $v$ of 6 minutes, i.e. a window size of 6 positions (`n±3`). 
 
@@ -182,7 +182,7 @@ caro60 <- caro60 %>%
   mutate(segment_id = rle_id(static))
 
 caro60
-## # A tibble: 200 x 9
+## # A tibble: 200 × 9
 ##    TierID TierName CollarID DatetimeUTC                E       N stepMean static
 ##    <chr>  <chr>       <dbl> <dttm>                 <dbl>   <dbl>    <dbl> <lgl> 
 ##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589.  1.21e6    NA    NA    
@@ -195,7 +195,7 @@ caro60
 ##  8 010C   Caro        13973 2015-09-15 08:14:00 2570481.  1.21e6    13.4  FALSE 
 ##  9 010C   Caro        13973 2015-09-15 08:15:00 2570486.  1.21e6     9.05 FALSE 
 ## 10 010C   Caro        13973 2015-09-15 08:16:00 2570490.  1.21e6    10.1  FALSE 
-## # ... with 190 more rows, and 1 more variable: segment_id <fct>
+## # … with 190 more rows, and 1 more variable: segment_id <fct>
 ```
 
 
@@ -207,7 +207,7 @@ caro60
 
 ### Task 5: Similarity measures 
 
-We will now leave the wild boar data and turn our attentian to human movement. You will use the dataset  [pedestrian.csv](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/pedestrian.csv) (right click > save target as..) for this (and the following) task. Download an import this dataset as a `data.frame`  or `tibble`. It it a set of six different but similar trajectories from pedestrians walking on a path. 
+We will now leave the wild boar data and turn our attentian to human movement. You will use the dataset  [pedestrian.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/pedestrian.csv) (right click > save target as..) for this (and the following) task. Download an import this dataset as a `data.frame`  or `tibble`. It it a set of six different but similar trajectories from pedestrians walking on a path. 
 
 For this task, explore the trajectories first and get an idea on how the pedestrians moved. We step away from using the wild boar data for this task because our animals don't express the type of similarity we want to illustrate here. Also, using the constructed pedestrian data allows us illustrating very typical similarity issues, that are picked-up in different ways by the different similarity measures. In later exercises we will get back to our wild boar!
 

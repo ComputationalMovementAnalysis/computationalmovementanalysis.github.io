@@ -2,7 +2,7 @@
 
 
 
-Open your RStudio Project [which you prepared](#w5-preperation) from this week. Create a new RScript and import the libraries we need for this week. Import your wildboar dataset [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/wildschwein_BE_2056.csv) as an `sf` object
+Open your RStudio Project [which you prepared](#w5-preperation) from this week. Create a new RScript and import the libraries we need for this week. Import your wildboar dataset [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/wildschwein_BE_2056.csv) as an `sf` object
 
 
 ```r
@@ -18,9 +18,9 @@ wildschwein_BE <- read_delim("00_Rawdata/wildschwein_BE_2056.csv",",") %>%
   st_as_sf(coords = c("E", "N"), crs = 2056, remove = FALSE)
 ```
 
-Download the dataset [Feldaufnahmen_Fanel.gpkg](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/Feldaufnahmen_Fanel.gpkg) and save it to your project folder. This is a vector dataset stored in the filetype *Geopackage*, which is similar to a *Shapefile*, with some advantages (see the website [shapefile must die](http://switchfromshapefile.org/)).
+Download the dataset [Feldaufnahmen_Fanel.gpkg](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/Feldaufnahmen_Fanel.gpkg) and save it to your project folder. This is a vector dataset stored in the filetype *Geopackage*, which is similar to a *Shapefile*, with some advantages (see the website [shapefile must die](http://switchfromshapefile.org/)).
 
-Also download the dataset [vegetationshoehe_LFI.tif](https://github.com/ComputationalMovementAnalysis/FS21/raw/master/00_Rawdata/vegetationshoehe_LFI.tif). This is a "raster" dataset stored in a Geotiff, similar to the map we imported in [week 1](#w1-importing-raster). Also store this file in your project folder and commit these to your repo.
+Also download the dataset [vegetationshoehe_LFI.tif](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/vegetationshoehe_LFI.tif). This is a "raster" dataset stored in a Geotiff, similar to the map we imported in [week 1](#w1-importing-raster). Also store this file in your project folder and commit these to your repo.
 
 
 ### Tasks 1: Import and visualize spatial data
