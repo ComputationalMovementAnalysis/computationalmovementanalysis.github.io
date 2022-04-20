@@ -4,7 +4,7 @@
 
 
 - Open the RStudio Project you created for week 2 in [the preparation](#w2-preparation)
-- Download the new wildboar movement data, and save it to your new project's directory [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/wildschwein_BE_2056.csv) (right click "Save target as..")
+- Download the new wildboar movement data, and save it to your new project's directory [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/wildschwein_BE_2056.csv) (right click "Save target as..")
 - Now, commit your changes to your repo like we did [last week](#w1-tasks-and-inputs) (see below):
 
 \BeginKnitrBlock{rmdtip}<div class="rmdtip">1. Save your (R/RMarkdown) file
@@ -97,11 +97,11 @@ After completing the task, commit your changes to git using a good commit messag
 @laube2011 analyse animal movement across different scales (see below). In their paper, the authors suggest reducing the granularity of the data by subsetting the data to every n^th^ element. We will do the same on a dataset that includes 200 locations of a single wild boar with a constant sampling interval of 60 seconds. 
 
 <div class="figure">
-<img src="02_Images/laube_2011_2.jpg" alt="Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)"  />
+<img src="02_Images/laube_2011_2.jpg" alt="Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)" width="705" />
 <p class="caption">(\#fig:unnamed-chunk-5)Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)</p>
 </div>
 
-Download this dataset here: [caro60.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/caro60.csv) (right click: save target as..). Import it just like you imported the other wild boar data and save it to a new variable named `caro` (note that the locations are stored in EPSG 2056).
+Download this dataset here: [caro60.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/caro60.csv) (right click: save target as..). Import it just like you imported the other wild boar data and save it to a new variable named `caro` (note that the locations are stored in EPSG 2056).
 
 Now manually reduce the granularity of our sampling interval by selecting every 3^rd^, 6^th^ and 9^th^ position and save the output to `caro_3`, `caro_6`,`caro_9` accordingly.
 
@@ -131,7 +131,7 @@ After completing the task, commit your changes to git using a good commit messag
 
 
 ```
-## # A tibble: 67 × 6
+## # A tibble: 67 x 6
 ##    TierID TierName CollarID DatetimeUTC                E        N
 ##    <chr>  <chr>       <dbl> <dttm>                 <dbl>    <dbl>
 ##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589. 1205095.
@@ -144,7 +144,7 @@ After completing the task, commit your changes to git using a good commit messag
 ##  8 010C   Caro        13973 2015-09-15 08:28:00 2570496. 1205094.
 ##  9 010C   Caro        13973 2015-09-15 08:31:00 2570497. 1205091.
 ## 10 010C   Caro        13973 2015-09-15 08:34:00 2570499. 1205091.
-## # … with 57 more rows
+## # ... with 57 more rows
 ```
 
 <img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-4.png" width="672" />

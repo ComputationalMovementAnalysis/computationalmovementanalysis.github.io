@@ -57,7 +57,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -291,7 +290,7 @@ div.csl-indent {
 <h2><span class="header-section-number">3.4</span> Tasks and Inputs<a href="W2_5_tasks_and_inputs.html#tasks-and-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Open the RStudio Project you created for week 2 in <a href="W2_3_preparation.html#w2-preparation">the preparation</a></li>
-<li>Download the new wildboar movement data, and save it to your new project’s directory <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/wildschwein_BE_2056.csv">wildschwein_BE_2056.csv</a> (right click “Save target as..”)</li>
+<li>Download the new wildboar movement data, and save it to your new project’s directory <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/wildschwein_BE_2056.csv">wildschwein_BE_2056.csv</a> (right click “Save target as..”)</li>
 <li>Now, commit your changes to your repo like we did <a href="W1_5_tasks_and_inputs.html#w1-tasks-and-inputs">last week</a> (see below):</li>
 </ul>
 
@@ -365,14 +364,14 @@ div.csl-indent {
 </div>
 <div id="task-4-cross-scale-movement-analysis" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> Task 4: Cross-scale movement analysis<a href="W2_5_tasks_and_inputs.html#task-4-cross-scale-movement-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">Laube and Purves (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> analyse animal movement across different scales (see below). In their paper, the authors suggest reducing the granularity of the data by subsetting the data to every n<sup>th</sup> element. We will do the same on a dataset that includes 200 locations of a single wild boar with a constant sampling interval of 60 seconds.</p>
+<p><span class="citation"><a href="90_references.html#ref-laube2011" role="doc-biblioref">Laube and Purves</a> (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> analyse animal movement across different scales (see below). In their paper, the authors suggest reducing the granularity of the data by subsetting the data to every n<sup>th</sup> element. We will do the same on a dataset that includes 200 locations of a single wild boar with a constant sampling interval of 60 seconds.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="02_Images/laube_2011_2.jpg" alt="Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)"  />
+<img src="02_Images/laube_2011_2.jpg" alt="Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)" width="705" />
 <p class="caption">
 Figure 3.1: Black points are used in calculation of movement parameters (e.g. speed) at a given termporal scale (Laube and Purves, 2011)
 </p>
 </div>
-<p>Download this dataset here: <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/caro60.csv">caro60.csv</a> (right click: save target as..). Import it just like you imported the other wild boar data and save it to a new variable named <code>caro</code> (note that the locations are stored in EPSG 2056).</p>
+<p>Download this dataset here: <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/caro60.csv">caro60.csv</a> (right click: save target as..). Import it just like you imported the other wild boar data and save it to a new variable named <code>caro</code> (note that the locations are stored in EPSG 2056).</p>
 <p>Now manually reduce the granularity of our sampling interval by selecting every 3<sup>rd</sup>, 6<sup>th</sup> and 9<sup>th</sup> position and save the output to <code>caro_3</code>, <code>caro_6</code>,<code>caro_9</code> accordingly.</p>
 <p>Tip: There are many ways to go about this, we recommend using <code>seq()</code> where <code>from = 1</code>, <code>to =</code> the length of the dataset and <code>by = n</code> (i.e. <code>3</code>, <code>6</code> or <code>9</code>). This creates an integer vector that can either used in <code>dplyr::slice()</code> or in row subsetting (type <code>?slice()</code> or <code>?"[.data.frame"</code> to get help on either of these methods).</p>
 <p>You should now have 4 datasets with different number of rows:</p>
@@ -386,7 +385,7 @@ Figure 3.1: Black points are used in calculation of movement parameters (e.g. s
 <span id="cb73-8"><a href="W2_5_tasks_and_inputs.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 23</span></span></code></pre></div>
 <p>Now calculate <code>timelag</code>, <code>steplength</code> and <code>speed</code> for these data sets, just as you did in the <a href="W2_5_tasks_and_inputs.html#w2-task2">last task</a>. To finish the task, compare the speeds visually in a line plot and also visualize the trajectories in a map (see examples below). Interpret the line plot, what do the different lines for the different temporal granularities tell you?</p>
 <p>After completing the task, commit your changes to git using a good commit message.</p>
-<pre><code>## # A tibble: 67 × 6
+<pre><code>## # A tibble: 67 x 6
 ##    TierID TierName CollarID DatetimeUTC                E        N
 ##    &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;                 &lt;dbl&gt;    &lt;dbl&gt;
 ##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589. 1205095.
@@ -399,7 +398,7 @@ Figure 3.1: Black points are used in calculation of movement parameters (e.g. s
 ##  8 010C   Caro        13973 2015-09-15 08:28:00 2570496. 1205094.
 ##  9 010C   Caro        13973 2015-09-15 08:31:00 2570497. 1205091.
 ## 10 010C   Caro        13973 2015-09-15 08:34:00 2570499. 1205091.
-## # … with 57 more rows</code></pre>
+## # ... with 57 more rows</code></pre>
 <p><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
 </div>
 <div id="task-5-deriving-movement-parameters-ii-rolling-window-functions" class="section level3 hasAnchor" number="3.4.5">
@@ -458,7 +457,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ComputationalMovementAnalysis/FS22/edit/master/W2_5_tasks_and_inputs.Rmd",
+"link": "https://github.com/ComputationalMovementAnalysis/FS22/edit/main/W2_5_tasks_and_inputs.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -466,7 +465,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ComputationalMovementAnalysis/FS22/blob/master/W2_5_tasks_and_inputs.Rmd",
+"link": "https://github.com/ComputationalMovementAnalysis/FS22/blob/main/W2_5_tasks_and_inputs.Rmd",
 "text": null
 },
 "download": null,

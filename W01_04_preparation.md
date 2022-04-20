@@ -1,6 +1,6 @@
-## Preperation
+## Preparation
 
-### Folder structure for this course {#folder-structure}
+## Folder structure for this course {#folder-structure}
 
 
 
@@ -51,7 +51,7 @@ Note:
 [^redundancy]: You will see the project names of all your RStudio Projects listed in RStudio. Having the week number in the project name keeps you from getting confused on which project you are working on.
 
 
-### Create an RStudio *project* for the first week
+## Create an RStudio *project* for the first week
 
 
 Create a new *RStudio Project* (File > New Project > New Directory > New Project). 

@@ -13,7 +13,7 @@ Before starting with the task:
 
 1. make sure you have read and followed the instructions in section [Preparation](#w0-preparation)
 2. In RStudio, open the RStudio Project you created for this week. You can see that you are in an RStudio Project if the project's name is visible next to the little RStudio logo in the top right corner of RStudio (otherwise it will read `Project: (None)`).
-3. Download the wildboar movement data here: [wildschwein_BE.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/wildschwein_BE.csv) (right click "Save target as..")
+3. Download the wildboar movement data here: [wildschwein_BE.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/wildschwein_BE.csv) (right click "Save target as..")
 
 Once you have set everything up, commit your file to your git repo in the following manner:
 
@@ -95,7 +95,7 @@ wildschwein_BE
 ```
 
 ```
-## # A tibble: 51,246 × 6
+## # A tibble: 51,246 x 6
 ##    TierID TierName CollarID DatetimeUTC           Lat  Long
 ##    <chr>  <chr>       <dbl> <dttm>              <dbl> <dbl>
 ##  1 002A   Sabi        12275 2014-08-22 21:00:12  47.0  7.05
@@ -108,7 +108,7 @@ wildschwein_BE
 ##  8 002A   Sabi        12275 2014-08-22 22:45:11  47.0  7.05
 ##  9 002A   Sabi        12275 2014-08-22 23:00:27  47.0  7.05
 ## 10 002A   Sabi        12275 2014-08-22 23:15:41  47.0  7.05
-## # … with 51,236 more rows
+## # ... with 51,236 more rows
 ```
 
 ```r
@@ -121,7 +121,7 @@ wildschwein_BE_sf
 ## Dimension:     XY
 ## Bounding box:  xmin: 7.019889 ymin: 46.97125 xmax: 7.112075 ymax: 47.01882
 ## Geodetic CRS:  WGS 84
-## # A tibble: 51,246 × 5
+## # A tibble: 51,246 x 5
 ##    TierID TierName CollarID DatetimeUTC                    geometry
 ##  * <chr>  <chr>       <dbl> <dttm>                      <POINT [°]>
 ##  1 002A   Sabi        12275 2014-08-22 21:00:12 (7.049618 46.99317)
@@ -134,7 +134,7 @@ wildschwein_BE_sf
 ##  8 002A   Sabi        12275 2014-08-22 22:45:11 (7.049237 46.99395)
 ##  9 002A   Sabi        12275 2014-08-22 23:00:27 (7.048383 46.99481)
 ## 10 002A   Sabi        12275 2014-08-22 23:15:41 (7.049396 46.99373)
-## # … with 51,236 more rows
+## # ... with 51,236 more rows
 ```
 
 As you can see, `st_as_sf()` has added some metadata to our dataframe (`geometry type`, `dimension`, `bbox`, `epsg` and `proj4string`) and replaced the columns `Lat` and `Long` with a column named `geometry`. Other than that, the new `sf` object is very similar to our original dataframe. In fact, `sf` objects *are* essentially `dataframes`, as you can verify with the function `is.data.frame()`:
@@ -188,7 +188,7 @@ wildschwein_BE
 ## Dimension:     XY
 ## Bounding box:  xmin: 2568153 ymin: 1202306 xmax: 2575154 ymax: 1207609
 ## Projected CRS: CH1903+ / LV95
-## # A tibble: 51,246 × 5
+## # A tibble: 51,246 x 5
 ##    TierID TierName CollarID DatetimeUTC                  geometry
 ##  * <chr>  <chr>       <dbl> <dttm>                    <POINT [m]>
 ##  1 002A   Sabi        12275 2014-08-22 21:00:12 (2570409 1204752)
@@ -201,7 +201,7 @@ wildschwein_BE
 ##  8 002A   Sabi        12275 2014-08-22 22:45:11 (2570381 1204840)
 ##  9 002A   Sabi        12275 2014-08-22 23:00:27 (2570316 1204935)
 ## 10 002A   Sabi        12275 2014-08-22 23:15:41 (2570393 1204815)
-## # … with 51,236 more rows
+## # ... with 51,236 more rows
 ```
 
 Commit your changes as described [in the beginning](#w1-tasks-and-inputs).
@@ -228,7 +228,7 @@ wildschwein_BE_grouped
 ## Dimension:     XY
 ## Bounding box:  xmin: 2568153 ymin: 1202306 xmax: 2575154 ymax: 1207609
 ## Projected CRS: CH1903+ / LV95
-## # A tibble: 51,246 × 5
+## # A tibble: 51,246 x 5
 ## # Groups:   TierID [3]
 ##    TierID TierName CollarID DatetimeUTC                  geometry
 ##    <chr>  <chr>       <dbl> <dttm>                    <POINT [m]>
@@ -242,7 +242,7 @@ wildschwein_BE_grouped
 ##  8 002A   Sabi        12275 2014-08-22 22:45:11 (2570381 1204840)
 ##  9 002A   Sabi        12275 2014-08-22 23:00:27 (2570316 1204935)
 ## 10 002A   Sabi        12275 2014-08-22 23:15:41 (2570393 1204815)
-## # … with 51,236 more rows
+## # ... with 51,236 more rows
 ```
 
 
@@ -258,12 +258,12 @@ wildschwein_BE_smry
 ## Dimension:     XY
 ## Bounding box:  xmin: 2568153 ymin: 1202306 xmax: 2575154 ymax: 1207609
 ## Projected CRS: CH1903+ / LV95
-## # A tibble: 3 × 2
+## # A tibble: 3 x 2
 ##   TierID                                                                geometry
 ##   <chr>                                                         <MULTIPOINT [m]>
-## 1 002A   ((2568903 1206200), (2568925 1206207), (2568980 1206197), (2569024 120…
-## 2 016A   ((2569231 1205823), (2569245 1205925), (2569247 1206027), (2569251 120…
-## 3 018A   ((2568153 1205611), (2568155 1205613), (2568161 1205624), (2568162 120…
+## 1 002A   ((2568903 1206200), (2568925 1206207), (2568980 1206197), (2569024 120~
+## 2 016A   ((2569231 1205823), (2569245 1205925), (2569247 1206027), (2569251 120~
+## 3 018A   ((2568153 1205611), (2568155 1205613), (2568161 1205624), (2568162 120~
 ```
 
 
@@ -299,7 +299,7 @@ Commit your changes as described [in the beginning](#w1-tasks-and-inputs). Have 
 
 ### Input: Importing raster data {#w1-importing-raster}
 
-In the next task, we would like to add a background map to our `mcp` object. Download the file here: [pk100_BE.tif](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/pk100_BE.tif) 
+In the next task, we would like to add a background map to our `mcp` object. Download the file here: [pk100_BE.tif](https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/pk100_BE.tif) 
 To import the file into `R`, we use the package `terra` with the function `rast`.
 
 

@@ -44,6 +44,7 @@ In the course, we will be needing the following packages (amongst others). Save 
 
 
 ```r
+install.packages("rmarkdown")
 install.packages("dplyr")
 install.packages("ggplot2")
 install.packages("readr")

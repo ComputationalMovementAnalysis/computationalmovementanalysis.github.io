@@ -57,7 +57,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -324,11 +323,11 @@ div.csl-indent {
 <p>We can now run <code>lead()</code> and <code>lag()</code> on this sequence to illustrate the output. <code>n =</code> specifies the offset, <code>default =</code> specifies the default value used to “fill” the emerging “empty spaces” of the vector. This helps us performing operations on subsequent values in a vector (or rows in a table).</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="W2_4_demo_tidyverse.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## Attache Paket: &#39;dplyr&#39;</code></pre>
+<pre><code>## Die folgenden Objekte sind maskiert von &#39;package:stats&#39;:
 ## 
 ##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
+<pre><code>## Die folgenden Objekte sind maskiert von &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="W2_4_demo_tidyverse.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lead</span>(numbers)</span></code></pre></div>
@@ -351,7 +350,7 @@ div.csl-indent {
 <span id="cb50-4"><a href="W2_4_demo_tidyverse.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb50-5"><a href="W2_4_demo_tidyverse.html#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-6"><a href="W2_4_demo_tidyverse.html#cb50-6" aria-hidden="true" tabindex="-1"></a>wildschwein</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 2
+<pre><code>## # A tibble: 10 x 2
 ##    TierID DatetimeUTC        
 ##    &lt;chr&gt;  &lt;dttm&gt;             
 ##  1 Hans   2015-01-01 00:00:00
@@ -370,7 +369,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="W2_4_demo_tidyverse.html#cb53-1" aria-hidden="true" tabindex="-1"></a>wildschwein <span class="ot">&lt;-</span> <span class="fu">mutate</span>(wildschwein,<span class="at">timelag =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(<span class="fu">lead</span>(DatetimeUTC),DatetimeUTC)))</span>
 <span id="cb53-2"><a href="W2_4_demo_tidyverse.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="W2_4_demo_tidyverse.html#cb53-3" aria-hidden="true" tabindex="-1"></a>wildschwein</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 3
+<pre><code>## # A tibble: 10 x 3
 ##    TierID DatetimeUTC         timelag
 ##    &lt;chr&gt;  &lt;dttm&gt;                &lt;dbl&gt;
 ##  1 Hans   2015-01-01 00:00:00      15
@@ -395,7 +394,7 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <span id="cb56-3"><a href="W2_4_demo_tidyverse.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-4"><a href="W2_4_demo_tidyverse.html#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-5"><a href="W2_4_demo_tidyverse.html#cb56-5" aria-hidden="true" tabindex="-1"></a>wildschwein</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 3
+<pre><code>## # A tibble: 10 x 3
 ## # Groups:   TierID [2]
 ##    TierID DatetimeUTC         timelag
 ##    &lt;chr&gt;  &lt;dttm&gt;                &lt;dbl&gt;
@@ -414,7 +413,7 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <h3><span class="header-section-number">3.1.5</span> <code>summarise()</code><a href="W2_4_demo_tidyverse.html#summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we want to summarise our data and get metrics <em>per animal</em>, we can use the <code>dplyr</code> function <code>summarise()</code>. In contrast to <code>mutate()</code>, which just adds a new column to the dataset, <code>summarise()</code> “collapses” the data to one row per individual (specified by <code>group_by</code>).</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="W2_4_demo_tidyverse.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(wildschwein, <span class="at">mean =</span> <span class="fu">mean</span>(timelag, <span class="at">na.rm =</span> T))</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
+<pre><code>## # A tibble: 2 x 2
 ##   TierID  mean
 ##   &lt;chr&gt;  &lt;dbl&gt;
 ## 1 Hans      15
@@ -429,7 +428,7 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <span id="cb60-3"><a href="W2_4_demo_tidyverse.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(                              <span class="co"># Summarise the data...</span></span>
 <span id="cb60-4"><a href="W2_4_demo_tidyverse.html#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_timelag =</span> <span class="fu">mean</span>(timelag,<span class="at">na.rm =</span> T)<span class="co"># ...by calculating the mean timelag</span></span>
 <span id="cb60-5"><a href="W2_4_demo_tidyverse.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
+<pre><code>## # A tibble: 2 x 2
 ##   TierID mean_timelag
 ##   &lt;chr&gt;         &lt;dbl&gt;
 ## 1 Hans             15
@@ -446,7 +445,7 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <span id="cb62-6"><a href="W2_4_demo_tidyverse.html#cb62-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb62-7"><a href="W2_4_demo_tidyverse.html#cb62-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-8"><a href="W2_4_demo_tidyverse.html#cb62-8" aria-hidden="true" tabindex="-1"></a>pigs</span></code></pre></div>
-<pre><code>## # A tibble: 12 × 4
+<pre><code>## # A tibble: 12 x 4
 ##    TierID sex   age   weight
 ##     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;
 ##  1   8001 M     A       50.8
@@ -465,7 +464,7 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <span id="cb64-2"><a href="W2_4_demo_tidyverse.html#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(         </span>
 <span id="cb64-3"><a href="W2_4_demo_tidyverse.html#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight)</span>
 <span id="cb64-4"><a href="W2_4_demo_tidyverse.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##   mean_weight
 ##         &lt;dbl&gt;
 ## 1        31.6</code></pre>
@@ -474,7 +473,7 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <span id="cb66-3"><a href="W2_4_demo_tidyverse.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(         </span>
 <span id="cb66-4"><a href="W2_4_demo_tidyverse.html#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight)</span>
 <span id="cb66-5"><a href="W2_4_demo_tidyverse.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
+<pre><code>## # A tibble: 2 x 2
 ##   sex   mean_weight
 ##   &lt;chr&gt;       &lt;dbl&gt;
 ## 1 F            40.5
@@ -484,9 +483,8 @@ To avoid this, we need to specify that <code>timelag</code> should just be calcu
 <span id="cb68-3"><a href="W2_4_demo_tidyverse.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(         </span>
 <span id="cb68-4"><a href="W2_4_demo_tidyverse.html#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight)</span>
 <span id="cb68-5"><a href="W2_4_demo_tidyverse.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups`
-## argument.</code></pre>
-<pre><code>## # A tibble: 4 × 3
+<pre><code>## `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 4 x 3
 ## # Groups:   sex [2]
 ##   sex   age   mean_weight
 ##   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;
@@ -531,7 +529,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ComputationalMovementAnalysis/FS22/edit/master/W2_4_demo_tidyverse.Rmd",
+"link": "https://github.com/ComputationalMovementAnalysis/FS22/edit/main/W2_4_demo_tidyverse.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -539,7 +537,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ComputationalMovementAnalysis/FS22/blob/master/W2_4_demo_tidyverse.Rmd",
+"link": "https://github.com/ComputationalMovementAnalysis/FS22/blob/main/W2_4_demo_tidyverse.Rmd",
 "text": null
 },
 "download": null,

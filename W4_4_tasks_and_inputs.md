@@ -54,14 +54,14 @@ my_age <- function(birthday, units){
   }
 
 my_age(birthday = "1997-04-23", units = "days")
-## Time difference of 9121.373 days
+## Time difference of 9128.486 days
 ```
 
 As we already know from using other functions, if we declare our variables in the order that we initially listed them, we do not need to specify the parameters (no need of `birthday = ` and `units =`).
 
 ```r
 my_age("1997-04-23", "days")
-## Time difference of 9121.373 days
+## Time difference of 9128.486 days
 ```
 
 
@@ -74,11 +74,11 @@ my_age <- function(birthday, units = "days"){
 
 # if not stated otherwise, our function uses the unit "days"
 my_age("1997-04-23")
-## Time difference of 9121.373 days
+## Time difference of 9128.486 days
 
 # We can still overwrite units
 my_age("1997-04-23", "hours")
-## Time difference of 218913 hours
+## Time difference of 219083.7 hours
 ```
 
 All you need to do now is run execute the function deceleration (`myage <- function...` etc.) at the beginning of your script, and you can use the function for your entire R session. Tip: Always try to make your function self sufficient: Don't call variables that were created outside the function call.
@@ -95,7 +95,7 @@ Note: if you treat your input variables as vectors, they will work in `dplyr`s `
 
 ### Task 2: Prepare Analysis
 
-In the next tasks we will look for "meet" patterns in our wildboar data. To simplify this, we will only use a subset of our wildboar data: The individuals *Rosa* and *Sabi* for the timespan *01.04.2015 - 15.04.2015*. You can download the dataset here [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/master/00_Rawdata/wildschwein_BE_2056.csv) (right click > save target as...) and filter it with the aforementioned criteria. 
+In the next tasks we will look for "meet" patterns in our wildboar data. To simplify this, we will only use a subset of our wildboar data: The individuals *Rosa* and *Sabi* for the timespan *01.04.2015 - 15.04.2015*. You can download the dataset here [wildschwein_BE_2056.csv](https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/wildschwein_BE_2056.csv) (right click > save target as...) and filter it with the aforementioned criteria. 
 
 Remember to load the necessary libraries first! We propose the following:
 
@@ -125,16 +125,16 @@ Your new dataset should look something like this (note the additional column):
 
 
 ```
-## # A tibble: 6 × 7
+## # A tibble: 6 x 7
 ## # Groups:   TierID [1]
 ##   TierID TierName CollarID DatetimeUTC              E      N DatetimeRound      
 ##   <chr>  <chr>       <dbl> <dttm>               <dbl>  <dbl> <dttm>             
-## 1 002A   Sabi        12275 2015-04-01 00:00:11 2.57e6 1.21e6 2015-04-01 00:00:00
-## 2 002A   Sabi        12275 2015-04-01 00:15:22 2.57e6 1.21e6 2015-04-01 00:15:00
-## 3 002A   Sabi        12275 2015-04-01 00:30:11 2.57e6 1.21e6 2015-04-01 00:30:00
-## 4 002A   Sabi        12275 2015-04-01 00:45:16 2.57e6 1.21e6 2015-04-01 00:45:00
-## 5 002A   Sabi        12275 2015-04-01 01:00:44 2.57e6 1.21e6 2015-04-01 01:00:00
-## 6 002A   Sabi        12275 2015-04-01 01:15:17 2.57e6 1.21e6 2015-04-01 01:15:00
+## 1 002A   Sabi        12275 2015-03-31 22:00:28 2.57e6 1.21e6 2015-03-31 22:00:00
+## 2 002A   Sabi        12275 2015-03-31 22:15:44 2.57e6 1.21e6 2015-03-31 22:15:00
+## 3 002A   Sabi        12275 2015-03-31 22:30:44 2.57e6 1.21e6 2015-03-31 22:30:00
+## 4 002A   Sabi        12275 2015-03-31 22:46:04 2.57e6 1.21e6 2015-03-31 22:45:00
+## 5 002A   Sabi        12275 2015-03-31 23:00:17 2.57e6 1.21e6 2015-03-31 23:00:00
+## 6 002A   Sabi        12275 2015-03-31 23:15:12 2.57e6 1.21e6 2015-03-31 23:15:00
 ```
 
 
