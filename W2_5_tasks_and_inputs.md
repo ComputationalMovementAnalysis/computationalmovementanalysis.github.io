@@ -131,7 +131,7 @@ After completing the task, commit your changes to git using a good commit messag
 
 
 ```
-## # A tibble: 67 x 6
+## # A tibble: 67 × 6
 ##    TierID TierName CollarID DatetimeUTC                E        N
 ##    <chr>  <chr>       <dbl> <dttm>                 <dbl>    <dbl>
 ##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589. 1205095.
@@ -144,7 +144,7 @@ After completing the task, commit your changes to git using a good commit messag
 ##  8 010C   Caro        13973 2015-09-15 08:28:00 2570496. 1205094.
 ##  9 010C   Caro        13973 2015-09-15 08:31:00 2570497. 1205091.
 ## 10 010C   Caro        13973 2015-09-15 08:34:00 2570499. 1205091.
-## # ... with 57 more rows
+## # … with 57 more rows
 ```
 
 <img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="W2_5_tasks_and_inputs_files/figure-html/unnamed-chunk-8-4.png" width="672" />
