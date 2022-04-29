@@ -1,6 +1,6 @@
 ## Demo Tidyverse
 
-[Download this file](W2_4_demo_tidyverse.Rmd)
+[Download the code as an Rmd-File](W2_4_demo_tidyverse.Rmd)
 
 Depending on your knowledge of `R`, getting an overview of the data we imported last week might have been quite a challenge. Surprisingly enough, importing, cleaning and exploring your data can be the most challenging, time consuming part of a project. RStudio and the tidyverse offer many helpful tools to make this part easier (and more fun). You have read chapters on `dplyr` and `magrittr` as a preparation for this exercise. Before we start with the exercise however, this demo illustrates a simple approach offered by tidyverse which is applicable to sf-objects.
 
