@@ -175,6 +175,10 @@ After completing the task, commit your changes to git using a good commit messag
 
 
 
+### Submission
+
+
+To submit your exercise, provide us with the URL of your Github repo as described [in the preperation](#create-github-repo).
 
 
 <!-- ### Task 5 (optional): Calculate turning angles -->

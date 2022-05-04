@@ -236,6 +236,9 @@ Commit your changes with a meaningful commit message. Now push all your changes 
 <img src="W3_4_tasks_and_inputs_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
+### Submission
+
+To submit your exercise, provide us with the URL of your Github repo as described [in the preperation](#create-github-repo-2).
 
 
 

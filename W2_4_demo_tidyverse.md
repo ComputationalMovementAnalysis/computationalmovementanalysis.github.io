@@ -18,7 +18,21 @@ now <- Sys.time()
 
 later <- now + 10000
 
+later
+```
+
+```
+## [1] "2022-05-04 15:28:14 UTC"
+```
+
+```r
 time_difference <- difftime(later,now)
+
+time_difference
+```
+
+```
+## Time difference of 2.777778 hours
 ```
 
 
@@ -51,6 +65,14 @@ time_difference
 `difftime` returns an object of the Class `difftime`. However in our case, numeric values would be more handy than the Class `difftime`. So we'll wrap the command in `as.numeric()`:
 
 ```r
+class(time_difference)
+```
+
+```
+## [1] "difftime"
+```
+
+```r
 str(time_difference)
 ```
 
@@ -70,6 +92,14 @@ str(time_difference)
 
 ```
 ##  num 167
+```
+
+```r
+class(time_difference)
+```
+
+```
+## [1] "numeric"
 ```
 
 ### `lead()` / `lag()`
@@ -236,7 +266,6 @@ After adding this grouping variable, calculating the `timelag` automatically acc
 wildschwein <- mutate(wildschwein,timelag = as.numeric(difftime(lead(DatetimeUTC),DatetimeUTC)))
 
 
-
 wildschwein
 ```
 
@@ -337,7 +366,7 @@ pigs
 ```r
 pigs %>%
     summarise(         
-    mean_weight = mean(weight)
+      mean_weight = mean(weight)
   )
 ```
 

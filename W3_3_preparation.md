@@ -47,7 +47,7 @@ git branch -M main
 ```
 
 
-### Step 4: Create a Github Repository 
+### Step 4: Create a Github Repository {#create-github-repo-2}
 
 Now create a Github Repository following the instructions from [last week](#create-github-repo). This time however, don't check `Add a README file`.
 Copy the https URL to your Github repo, which should look something like this: `https://github.com/YOUR-GITHUB-USERNAME/cma-week3.git`

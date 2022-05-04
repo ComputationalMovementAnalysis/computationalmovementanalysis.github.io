@@ -218,6 +218,7 @@ div.csl-indent {
 <li><a href="W2_5_tasks_and_inputs.html#w2-task2">Task 3: Deriving movement parameters I: Speed<span></span></a></li>
 <li><a href="W2_5_tasks_and_inputs.html#task-4-cross-scale-movement-analysis">Task 4: Cross-scale movement analysis<span></span></a></li>
 <li><a href="W2_5_tasks_and_inputs.html#task-5-deriving-movement-parameters-ii-rolling-window-functions">Task 5: Deriving movement parameters II: Rolling window functions<span></span></a></li>
+<li><a href="W2_5_tasks_and_inputs.html#submission">Submission<span></span></a></li>
 </ul></li>
 </ul></li>
 <li><a href="W3_1_exercise.html#exercise-3">Exercise 3<span></span></a>
@@ -227,7 +228,7 @@ div.csl-indent {
 <li><a href="W3_3_preparation.html#step-1-create-a-normal-rstudio-project">Step 1: Create a “normal” RStudio Project<span></span></a></li>
 <li><a href="W3_3_preparation.html#step-2-activate-git-version-control">Step 2: Activate Git Version Control<span></span></a></li>
 <li><a href="W3_3_preparation.html#step-3-rename-branch">Step 3: Rename branch<span></span></a></li>
-<li><a href="W3_3_preparation.html#step-4-create-a-github-repository">Step 4: Create a Github Repository<span></span></a></li>
+<li><a href="W3_3_preparation.html#create-github-repo-2">Step 4: Create a Github Repository<span></span></a></li>
 <li><a href="W3_3_preparation.html#step-5-connect-to-github">Step 5: Connect to Github<span></span></a></li>
 </ul></li>
 <li><a href="W3_4_tasks_and_inputs.html#tasks-and-inputs-1">Tasks and Inputs<span></span></a>
@@ -238,6 +239,7 @@ div.csl-indent {
 <li><a href="W3_4_tasks_and_inputs.html#task-4-segment-based-analysis">Task 4: Segment-based analysis<span></span></a></li>
 <li><a href="W3_4_tasks_and_inputs.html#task-5-similarity-measures">Task 5: Similarity measures<span></span></a></li>
 <li><a href="W3_4_tasks_and_inputs.html#task-6-calculate-similarity">Task 6: Calculate similarity<span></span></a></li>
+<li><a href="W3_4_tasks_and_inputs.html#submission-1">Submission<span></span></a></li>
 </ul></li>
 <li><a href="W3_5_peer_feedback.html#peer-feedback">Peer Feedback<span></span></a></li>
 </ul></li>
@@ -293,45 +295,45 @@ div.csl-indent {
 <p>Up to now, we have used a variety of different functions designed by other developers. Sometimes we need to execute an operation multiple times, and most often it is reasonable to write a function to do so. Whenever you have copied and pasted a block of code more than twice, you should consider writing a function <span class="citation">(<a href="90_references.html#ref-wickham2017" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>.</p>
 <p>We have violated this rule multiple times when calculating the Euclidean distances between points. Writing and rewriting the code <code>sqrt((x-lead(x,1))^2+(y-lead(y,1))^2)</code> over and over again is not only cumbersome, it is also error prone. We can easily wrap this operation into a function. This input on writing functions should bring you up to speed to do this in your first task.</p>
 <p>The first step in writing a function, is picking a name and assigning <code>&lt;- function(){}</code> to it.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="W4_4_tasks_and_inputs.html#cb86-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(){}</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="W4_4_tasks_and_inputs.html#cb93-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(){}</span></code></pre></div>
 <p>To run the function, we have to call the assigned name with the brackets. This function gives no output, which is why we get <code>NULL</code> back.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="W4_4_tasks_and_inputs.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>()</span>
-<span id="cb87-2"><a href="W4_4_tasks_and_inputs.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="do">## NULL</span></span>
-<span id="cb87-3"><a href="W4_4_tasks_and_inputs.html#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-4"><a href="W4_4_tasks_and_inputs.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(testfun)</span>
-<span id="cb87-5"><a href="W4_4_tasks_and_inputs.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;function&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="W4_4_tasks_and_inputs.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>()</span>
+<span id="cb94-2"><a href="W4_4_tasks_and_inputs.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="do">## NULL</span></span>
+<span id="cb94-3"><a href="W4_4_tasks_and_inputs.html#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-4"><a href="W4_4_tasks_and_inputs.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(testfun)</span>
+<span id="cb94-5"><a href="W4_4_tasks_and_inputs.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;function&quot;</span></span></code></pre></div>
 <p>To make the function actually <em>do</em> something, we need to specify <em>what</em> should be done within the curly brackets <code>{}</code>. The following function always prints the same statement and accepts no input values:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="W4_4_tasks_and_inputs.html#cb88-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(){<span class="fu">print</span>(<span class="st">&quot;this function does nothing&quot;</span>)}</span>
-<span id="cb88-2"><a href="W4_4_tasks_and_inputs.html#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="W4_4_tasks_and_inputs.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>()</span>
-<span id="cb88-4"><a href="W4_4_tasks_and_inputs.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;this function does nothing&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="W4_4_tasks_and_inputs.html#cb95-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(){<span class="fu">print</span>(<span class="st">&quot;this function does nothing&quot;</span>)}</span>
+<span id="cb95-2"><a href="W4_4_tasks_and_inputs.html#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="W4_4_tasks_and_inputs.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>()</span>
+<span id="cb95-4"><a href="W4_4_tasks_and_inputs.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;this function does nothing&quot;</span></span></code></pre></div>
 <p>If we want the function to accept some input values, we have to define them within the round brackets. For example, I specify a variable named <code>sometext</code> and can call this variable within the execution.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="W4_4_tasks_and_inputs.html#cb89-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(sometext){<span class="fu">print</span>(sometext)}</span>
-<span id="cb89-2"><a href="W4_4_tasks_and_inputs.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="W4_4_tasks_and_inputs.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>(<span class="at">sometext =</span> <span class="st">&quot;this function does slightly more, but still not much&quot;</span>)</span>
-<span id="cb89-4"><a href="W4_4_tasks_and_inputs.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;this function does slightly more, but still not much&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="W4_4_tasks_and_inputs.html#cb96-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(sometext){<span class="fu">print</span>(sometext)}</span>
+<span id="cb96-2"><a href="W4_4_tasks_and_inputs.html#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="W4_4_tasks_and_inputs.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">testfun</span>(<span class="at">sometext =</span> <span class="st">&quot;this function does slightly more, but still not much&quot;</span>)</span>
+<span id="cb96-4"><a href="W4_4_tasks_and_inputs.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;this function does slightly more, but still not much&quot;</span></span></code></pre></div>
 <p>Let’s take a more practical example. Say we want a function that calculates our age if provided with the date of our birthday. We can use <code>Sys.time()</code> to provide today’s date and <code>difftime()</code> to calculate the time difference between today and our birthday.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="W4_4_tasks_and_inputs.html#cb90-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, units){</span>
-<span id="cb90-2"><a href="W4_4_tasks_and_inputs.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(),birthday, <span class="at">units =</span> units)</span>
-<span id="cb90-3"><a href="W4_4_tasks_and_inputs.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-4"><a href="W4_4_tasks_and_inputs.html#cb90-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-5"><a href="W4_4_tasks_and_inputs.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="at">birthday =</span> <span class="st">&quot;1997-04-23&quot;</span>, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>)</span>
-<span id="cb90-6"><a href="W4_4_tasks_and_inputs.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9137.323 days</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="W4_4_tasks_and_inputs.html#cb97-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, units){</span>
+<span id="cb97-2"><a href="W4_4_tasks_and_inputs.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(),birthday, <span class="at">units =</span> units)</span>
+<span id="cb97-3"><a href="W4_4_tasks_and_inputs.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb97-4"><a href="W4_4_tasks_and_inputs.html#cb97-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-5"><a href="W4_4_tasks_and_inputs.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="at">birthday =</span> <span class="st">&quot;1997-04-23&quot;</span>, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>)</span>
+<span id="cb97-6"><a href="W4_4_tasks_and_inputs.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9142.53 days</span></span></code></pre></div>
 <p>As we already know from using other functions, if we declare our variables in the order that we initially listed them, we do not need to specify the parameters (no need of <code>birthday =</code> and <code>units =</code>).</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="W4_4_tasks_and_inputs.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>, <span class="st">&quot;days&quot;</span>)</span>
-<span id="cb91-2"><a href="W4_4_tasks_and_inputs.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9137.323 days</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="W4_4_tasks_and_inputs.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>, <span class="st">&quot;days&quot;</span>)</span>
+<span id="cb98-2"><a href="W4_4_tasks_and_inputs.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9142.53 days</span></span></code></pre></div>
 <p>If we want any of our parameters to have default value, we can assign an initial value to the parameter when declaring the variables within the round brackets.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="W4_4_tasks_and_inputs.html#cb92-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>){</span>
-<span id="cb92-2"><a href="W4_4_tasks_and_inputs.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(),birthday, <span class="at">units =</span> units)</span>
-<span id="cb92-3"><a href="W4_4_tasks_and_inputs.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb92-4"><a href="W4_4_tasks_and_inputs.html#cb92-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-5"><a href="W4_4_tasks_and_inputs.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if not stated otherwise, our function uses the unit &quot;days&quot;</span></span>
-<span id="cb92-6"><a href="W4_4_tasks_and_inputs.html#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>)</span>
-<span id="cb92-7"><a href="W4_4_tasks_and_inputs.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9137.323 days</span></span>
-<span id="cb92-8"><a href="W4_4_tasks_and_inputs.html#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-9"><a href="W4_4_tasks_and_inputs.html#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We can still overwrite units</span></span>
-<span id="cb92-10"><a href="W4_4_tasks_and_inputs.html#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>, <span class="st">&quot;hours&quot;</span>)</span>
-<span id="cb92-11"><a href="W4_4_tasks_and_inputs.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 219295.8 hours</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="W4_4_tasks_and_inputs.html#cb99-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>){</span>
+<span id="cb99-2"><a href="W4_4_tasks_and_inputs.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(),birthday, <span class="at">units =</span> units)</span>
+<span id="cb99-3"><a href="W4_4_tasks_and_inputs.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb99-4"><a href="W4_4_tasks_and_inputs.html#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-5"><a href="W4_4_tasks_and_inputs.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if not stated otherwise, our function uses the unit &quot;days&quot;</span></span>
+<span id="cb99-6"><a href="W4_4_tasks_and_inputs.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>)</span>
+<span id="cb99-7"><a href="W4_4_tasks_and_inputs.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9142.53 days</span></span>
+<span id="cb99-8"><a href="W4_4_tasks_and_inputs.html#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-9"><a href="W4_4_tasks_and_inputs.html#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We can still overwrite units</span></span>
+<span id="cb99-10"><a href="W4_4_tasks_and_inputs.html#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>, <span class="st">&quot;hours&quot;</span>)</span>
+<span id="cb99-11"><a href="W4_4_tasks_and_inputs.html#cb99-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 219420.7 hours</span></span></code></pre></div>
 <p>All you need to do now is run execute the function deceleration (<code>myage &lt;- function...</code> etc.) at the beginning of your script, and you can use the function for your entire R session. Tip: Always try to make your function self sufficient: Don’t call variables that were created outside the function call.</p>
 <div id="task-1-write-your-own-functions" class="section level3 hasAnchor">
 <h3>Task 1: Write your own functions<a href="W4_4_tasks_and_inputs.html#task-1-write-your-own-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -342,10 +344,10 @@ div.csl-indent {
 <h3>Task 2: Prepare Analysis<a href="W4_4_tasks_and_inputs.html#task-2-prepare-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the next tasks we will look for “meet” patterns in our wildboar data. To simplify this, we will only use a subset of our wildboar data: The individuals <em>Rosa</em> and <em>Sabi</em> for the timespan <em>01.04.2015 - 15.04.2015</em>. You can download the dataset here <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/wildschwein_BE_2056.csv">wildschwein_BE_2056.csv</a> (right click &gt; save target as…) and filter it with the aforementioned criteria.</p>
 <p>Remember to load the necessary libraries first! We propose the following:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="W4_4_tasks_and_inputs.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)        </span>
-<span id="cb93-2"><a href="W4_4_tasks_and_inputs.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)        </span>
-<span id="cb93-3"><a href="W4_4_tasks_and_inputs.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)      </span>
-<span id="cb93-4"><a href="W4_4_tasks_and_inputs.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="W4_4_tasks_and_inputs.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)        </span>
+<span id="cb100-2"><a href="W4_4_tasks_and_inputs.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)        </span>
+<span id="cb100-3"><a href="W4_4_tasks_and_inputs.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)      </span>
+<span id="cb100-4"><a href="W4_4_tasks_and_inputs.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
 </div>
 <div id="task-3-create-join-key" class="section level3 hasAnchor">
 <h3>Task 3: Create Join Key<a href="W4_4_tasks_and_inputs.html#task-3-create-join-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>

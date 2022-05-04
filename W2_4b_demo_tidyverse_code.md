@@ -14,14 +14,21 @@ now <- Sys.time()
 
 later <- now + 10000
 
+later
+
 time_difference <- difftime(later,now)
+
+time_difference
 time_difference
 time_difference <- difftime(later,now,units = "mins")
 time_difference
+class(time_difference)
+
 str(time_difference)
 time_difference <- as.numeric(difftime(later,now,units = "mins"))
 
 str(time_difference)
+class(time_difference)
 
 numbers <- 1:10
 
@@ -44,6 +51,7 @@ wildschwein <- tibble(
   )
 
 wildschwein
+
 wildschwein$timelag  <- as.numeric(difftime(lead(wildschwein$DatetimeUTC), wildschwein$DatetimeUTC))
 
 wildschwein <- mutate(wildschwein,timelag = as.numeric(difftime(lead(DatetimeUTC),DatetimeUTC)))
@@ -51,7 +59,6 @@ wildschwein <- mutate(wildschwein,timelag = as.numeric(difftime(lead(DatetimeUTC
 wildschwein
 wildschwein <- group_by(wildschwein,TierID)
 wildschwein <- mutate(wildschwein,timelag = as.numeric(difftime(lead(DatetimeUTC),DatetimeUTC)))
-
 
 
 wildschwein
@@ -73,7 +80,7 @@ pigs
 
 pigs %>%
     summarise(         
-    mean_weight = mean(weight)
+      mean_weight = mean(weight)
   )
 
 pigs %>%
