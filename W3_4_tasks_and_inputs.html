@@ -57,7 +57,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -220,6 +219,7 @@ div.csl-indent {
 <li><a href="W2_5_tasks_and_inputs.html#task-5-deriving-movement-parameters-ii-rolling-window-functions">Task 5: Deriving movement parameters II: Rolling window functions<span></span></a></li>
 <li><a href="W2_5_tasks_and_inputs.html#submission">Submission<span></span></a></li>
 </ul></li>
+<li><a href="W2_6_solutions.html#solutions-1">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="W3_1_exercise.html#exercise-3">Exercise 3<span></span></a>
 <ul>
@@ -292,12 +292,12 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tasks-and-inputs-1" class="section level2 hasAnchor">
 <h2>Tasks and Inputs<a href="W3_4_tasks_and_inputs.html#tasks-and-inputs-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You’ve read <span class="citation">Laube and Purves (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> about segmenting trajectories. In the paper, the authors define “<em>static</em>” fixes as “<em>those whose average Euclidean distance to other fixes inside a temporal window v is less than some threshold d</em>”, as illustrated in the following figure:</p>
+<p>You’ve read <span class="citation"><a href="90_references.html#ref-laube2011" role="doc-biblioref">Laube and Purves</a> (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> about segmenting trajectories. In the paper, the authors define “<em>static</em>” fixes as “<em>those whose average Euclidean distance to other fixes inside a temporal window v is less than some threshold d</em>,” as illustrated in the following figure:</p>
 
 <div class="figure"><span style="display:block;" id="fig:laubeimg"></span>
 <img src="02_Images/laube_2011.jpg" alt="The figure from Laube and Purves (2011) visualizes steps a) zu d), which will be explained below:"  />
 <p class="caption">
-Figure 3: The figure from <span class="citation">Laube and Purves (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> visualizes steps a) zu d), which will be explained below:
+Figure 3: The figure from <span class="citation"><a href="90_references.html#ref-laube2011" role="doc-biblioref">Laube and Purves</a> (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> visualizes steps a) zu d), which will be explained below:
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -306,7 +306,7 @@ Figure 3: The figure from <span class="citation">Laube and Purves (<a href="90_r
 <li>Remove “static points”: These are points where the average distance is less than a given threshold. This segments the trajectory into subtrajectories</li>
 <li>Now remove short subtrajectories: These are trajectories with a short duration (whereas “short” is tbd)</li>
 </ol>
-<p>We will <strong>demonstrate</strong> implementing this method on the wild boar “Sabi”, restricting ourselves to a couple of tracking days. Your task will be to understand this implementation and apply it on Caro, with a different sampling interval.</p>
+<p>We will <strong>demonstrate</strong> implementing this method on the wild boar “Sabi,” restricting ourselves to a couple of tracking days. Your task will be to understand this implementation and apply it on Caro, with a different sampling interval.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="W3_4_tasks_and_inputs_files/figure-html/unnamed-chunk-3-1.png" alt="Movement of the wildboar 'Sabi' in the timespan 01-02.07.2015. The circle highlingts possible 'static points'" width="672" />
 <p class="caption">
@@ -326,57 +326,57 @@ Figure 4: Movement of the wildboar ‘Sabi’ in the timespan 01-02.07.2015. The
 <div id="step-b-measure-the-distance-from-every-point-to-every-other-point-within-this-temporal-window-v" class="section level4 hasAnchor">
 <h4>Step b): Measure the distance from every point to every other point within this temporal window <span class="math inline">\(v\)</span><a href="W3_4_tasks_and_inputs.html#step-b-measure-the-distance-from-every-point-to-every-other-point-within-this-temporal-window-v" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Just like last week, we use the formula for calculating the Euclidean distance in in combination with <code>lead()</code> and <code>lag()</code>. For example, to create the necessary offset of n-2, we use <code>lag(x, 2)</code>. For each offset, we create one individual column.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="W3_4_tasks_and_inputs.html#cb88-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-2"><a href="W3_4_tasks_and_inputs.html#cb88-2" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span></span>
-<span id="cb88-3"><a href="W3_4_tasks_and_inputs.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb88-4"><a href="W3_4_tasks_and_inputs.html#cb88-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">nMinus2 =</span> <span class="fu">sqrt</span>((<span class="fu">lag</span>(E,<span class="dv">2</span>)<span class="sc">-</span>E)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(<span class="fu">lag</span>(N,<span class="dv">2</span>)<span class="sc">-</span>N)<span class="sc">^</span><span class="dv">2</span>),   <span class="co"># distance to pos -30 minutes</span></span>
-<span id="cb88-5"><a href="W3_4_tasks_and_inputs.html#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">nMinus1 =</span> <span class="fu">sqrt</span>((<span class="fu">lag</span>(E,<span class="dv">1</span>)<span class="sc">-</span>E)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(<span class="fu">lag</span>(N,<span class="dv">1</span>)<span class="sc">-</span>N)<span class="sc">^</span><span class="dv">2</span>),   <span class="co"># distance to pos -15 minutes</span></span>
-<span id="cb88-6"><a href="W3_4_tasks_and_inputs.html#cb88-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">nPlus1  =</span> <span class="fu">sqrt</span>((E<span class="sc">-</span><span class="fu">lead</span>(E,<span class="dv">1</span>))<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(N<span class="sc">-</span><span class="fu">lead</span>(N,<span class="dv">1</span>))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># distance to pos +15 mintues</span></span>
-<span id="cb88-7"><a href="W3_4_tasks_and_inputs.html#cb88-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">nPlus2  =</span> <span class="fu">sqrt</span>((E<span class="sc">-</span><span class="fu">lead</span>(E,<span class="dv">2</span>))<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(N<span class="sc">-</span><span class="fu">lead</span>(N,<span class="dv">2</span>))<span class="sc">^</span><span class="dv">2</span>)  <span class="co"># distance to pos +30 minutes</span></span>
-<span id="cb88-8"><a href="W3_4_tasks_and_inputs.html#cb88-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="W3_4_tasks_and_inputs.html#cb89-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-2"><a href="W3_4_tasks_and_inputs.html#cb89-2" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="W3_4_tasks_and_inputs.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb89-4"><a href="W3_4_tasks_and_inputs.html#cb89-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">nMinus2 =</span> <span class="fu">sqrt</span>((<span class="fu">lag</span>(E,<span class="dv">2</span>)<span class="sc">-</span>E)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(<span class="fu">lag</span>(N,<span class="dv">2</span>)<span class="sc">-</span>N)<span class="sc">^</span><span class="dv">2</span>),   <span class="co"># distance to pos -30 minutes</span></span>
+<span id="cb89-5"><a href="W3_4_tasks_and_inputs.html#cb89-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">nMinus1 =</span> <span class="fu">sqrt</span>((<span class="fu">lag</span>(E,<span class="dv">1</span>)<span class="sc">-</span>E)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(<span class="fu">lag</span>(N,<span class="dv">1</span>)<span class="sc">-</span>N)<span class="sc">^</span><span class="dv">2</span>),   <span class="co"># distance to pos -15 minutes</span></span>
+<span id="cb89-6"><a href="W3_4_tasks_and_inputs.html#cb89-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">nPlus1  =</span> <span class="fu">sqrt</span>((E<span class="sc">-</span><span class="fu">lead</span>(E,<span class="dv">1</span>))<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(N<span class="sc">-</span><span class="fu">lead</span>(N,<span class="dv">1</span>))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># distance to pos +15 mintues</span></span>
+<span id="cb89-7"><a href="W3_4_tasks_and_inputs.html#cb89-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">nPlus2  =</span> <span class="fu">sqrt</span>((E<span class="sc">-</span><span class="fu">lead</span>(E,<span class="dv">2</span>))<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(N<span class="sc">-</span><span class="fu">lead</span>(N,<span class="dv">2</span>))<span class="sc">^</span><span class="dv">2</span>)  <span class="co"># distance to pos +30 minutes</span></span>
+<span id="cb89-8"><a href="W3_4_tasks_and_inputs.html#cb89-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Now we want to calculate the mean distance of <code>nMinus2</code>, <code>nMinus1</code>, <code>nPlus1</code>, <code>nPlus2</code> for each row. Since we want the mean value <em>per Row</em>, we have to explicitly specify this before <code>mutate()</code> with the function <code>rowwise()</code>. To remove this rowwise-grouping, we end the operation with <code>ungroup()</code>.</p>
 <p>Note that for the first two positions, we cannot calculate a <code>stepMean</code> since there is no Position <code>n-2</code> for these positions. This is also true for the last to positions (lacking a position <code>n+2</code>).</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="W3_4_tasks_and_inputs.html#cb89-1" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span></span>
-<span id="cb89-2"><a href="W3_4_tasks_and_inputs.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb89-3"><a href="W3_4_tasks_and_inputs.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb89-4"><a href="W3_4_tasks_and_inputs.html#cb89-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">stepMean =</span> <span class="fu">mean</span>(<span class="fu">c</span>(nMinus2, nMinus1,nPlus1,nPlus2))</span>
-<span id="cb89-5"><a href="W3_4_tasks_and_inputs.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb89-6"><a href="W3_4_tasks_and_inputs.html#cb89-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() </span>
-<span id="cb89-7"><a href="W3_4_tasks_and_inputs.html#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-8"><a href="W3_4_tasks_and_inputs.html#cb89-8" aria-hidden="true" tabindex="-1"></a>sabi</span>
-<span id="cb89-9"><a href="W3_4_tasks_and_inputs.html#cb89-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 192 × 11</span></span>
-<span id="cb89-10"><a href="W3_4_tasks_and_inputs.html#cb89-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    TierID TierName CollarID DatetimeUTC                E       N nMinus2 nMinus1</span></span>
-<span id="cb89-11"><a href="W3_4_tasks_and_inputs.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;                 &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb89-12"><a href="W3_4_tasks_and_inputs.html#cb89-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 002A   Sabi        12275 2015-07-01 00:00:10 2570532.  1.21e6    NA      NA  </span></span>
-<span id="cb89-13"><a href="W3_4_tasks_and_inputs.html#cb89-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 002A   Sabi        12275 2015-07-01 00:15:14 2570530.  1.21e6    NA      15.4</span></span>
-<span id="cb89-14"><a href="W3_4_tasks_and_inputs.html#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 002A   Sabi        12275 2015-07-01 00:30:11 2570676.  1.21e6   159.    155. </span></span>
-<span id="cb89-15"><a href="W3_4_tasks_and_inputs.html#cb89-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 002A   Sabi        12275 2015-07-01 00:45:43 2570707.  1.21e6   177.     63.1</span></span>
-<span id="cb89-16"><a href="W3_4_tasks_and_inputs.html#cb89-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 002A   Sabi        12275 2015-07-01 01:00:20 2570656.  1.21e6    22.0    68.3</span></span>
-<span id="cb89-17"><a href="W3_4_tasks_and_inputs.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 002A   Sabi        12275 2015-07-01 01:15:59 2570850.  1.21e6   144.    204. </span></span>
-<span id="cb89-18"><a href="W3_4_tasks_and_inputs.html#cb89-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 002A   Sabi        12275 2015-07-01 01:31:02 2570819.  1.21e6   173.     31.7</span></span>
-<span id="cb89-19"><a href="W3_4_tasks_and_inputs.html#cb89-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 002A   Sabi        12275 2015-07-01 01:45:37 2570863.  1.21e6   112.    112. </span></span>
-<span id="cb89-20"><a href="W3_4_tasks_and_inputs.html#cb89-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 002A   Sabi        12275 2015-07-01 02:00:17 2570863.  1.21e6   137.     27.1</span></span>
-<span id="cb89-21"><a href="W3_4_tasks_and_inputs.html#cb89-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 002A   Sabi        12275 2015-07-01 02:15:13 2570891.  1.21e6    35.5    29.2</span></span>
-<span id="cb89-22"><a href="W3_4_tasks_and_inputs.html#cb89-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 182 more rows, and 3 more variables: nPlus1 &lt;dbl&gt;, nPlus2 &lt;dbl&gt;,</span></span>
-<span id="cb89-23"><a href="W3_4_tasks_and_inputs.html#cb89-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   stepMean &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="W3_4_tasks_and_inputs.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="W3_4_tasks_and_inputs.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb90-3"><a href="W3_4_tasks_and_inputs.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb90-4"><a href="W3_4_tasks_and_inputs.html#cb90-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">stepMean =</span> <span class="fu">mean</span>(<span class="fu">c</span>(nMinus2, nMinus1,nPlus1,nPlus2))</span>
+<span id="cb90-5"><a href="W3_4_tasks_and_inputs.html#cb90-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb90-6"><a href="W3_4_tasks_and_inputs.html#cb90-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() </span>
+<span id="cb90-7"><a href="W3_4_tasks_and_inputs.html#cb90-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-8"><a href="W3_4_tasks_and_inputs.html#cb90-8" aria-hidden="true" tabindex="-1"></a>sabi</span>
+<span id="cb90-9"><a href="W3_4_tasks_and_inputs.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 192 x 11</span></span>
+<span id="cb90-10"><a href="W3_4_tasks_and_inputs.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    TierID TierName CollarID DatetimeUTC                E       N nMinus2 nMinus1</span></span>
+<span id="cb90-11"><a href="W3_4_tasks_and_inputs.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;                 &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb90-12"><a href="W3_4_tasks_and_inputs.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 002A   Sabi        12275 2015-06-30 22:00:13 2569972.  1.21e6   NA      NA   </span></span>
+<span id="cb90-13"><a href="W3_4_tasks_and_inputs.html#cb90-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 002A   Sabi        12275 2015-06-30 22:16:06 2569975.  1.21e6   NA     271.  </span></span>
+<span id="cb90-14"><a href="W3_4_tasks_and_inputs.html#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 002A   Sabi        12275 2015-06-30 22:30:19 2570266.  1.21e6  573.    365.  </span></span>
+<span id="cb90-15"><a href="W3_4_tasks_and_inputs.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 002A   Sabi        12275 2015-06-30 22:45:13 2570208.  1.21e6  361.     80.5 </span></span>
+<span id="cb90-16"><a href="W3_4_tasks_and_inputs.html#cb90-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 002A   Sabi        12275 2015-06-30 23:00:10 2570247.  1.21e6  127.    186.  </span></span>
+<span id="cb90-17"><a href="W3_4_tasks_and_inputs.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 002A   Sabi        12275 2015-06-30 23:15:17 2570512.  1.21e6  703.    524.  </span></span>
+<span id="cb90-18"><a href="W3_4_tasks_and_inputs.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 002A   Sabi        12275 2015-06-30 23:30:38 2570684.  1.21e6  766.    247.  </span></span>
+<span id="cb90-19"><a href="W3_4_tasks_and_inputs.html#cb90-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 002A   Sabi        12275 2015-06-30 23:45:16 2570526.  1.21e6  229.    167.  </span></span>
+<span id="cb90-20"><a href="W3_4_tasks_and_inputs.html#cb90-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 002A   Sabi        12275 2015-07-01 00:00:10 2570532.  1.21e6  163.      9.33</span></span>
+<span id="cb90-21"><a href="W3_4_tasks_and_inputs.html#cb90-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 002A   Sabi        12275 2015-07-01 00:15:14 2570530.  1.21e6    8.98   15.4 </span></span>
+<span id="cb90-22"><a href="W3_4_tasks_and_inputs.html#cb90-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # ... with 182 more rows, and 3 more variables: nPlus1 &lt;dbl&gt;, nPlus2 &lt;dbl&gt;,</span></span>
+<span id="cb90-23"><a href="W3_4_tasks_and_inputs.html#cb90-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   stepMean &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div id="step-c-remove-static-points" class="section level4 hasAnchor">
 <h4>Step c): Remove “static points”<a href="W3_4_tasks_and_inputs.html#step-c-remove-static-points" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can now determine if an animal is moving or not by specifying a threshold distance on <code>stepMean</code>. In our example, we use the mean value as a threshold: Positions with distances below this value are considered static.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="W3_4_tasks_and_inputs.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span> </span>
-<span id="cb90-2"><a href="W3_4_tasks_and_inputs.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb90-3"><a href="W3_4_tasks_and_inputs.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">static =</span> stepMean <span class="sc">&lt;</span> <span class="fu">mean</span>(stepMean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb90-4"><a href="W3_4_tasks_and_inputs.html#cb90-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-5"><a href="W3_4_tasks_and_inputs.html#cb90-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-6"><a href="W3_4_tasks_and_inputs.html#cb90-6" aria-hidden="true" tabindex="-1"></a>sabi_filter <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span></span>
-<span id="cb90-7"><a href="W3_4_tasks_and_inputs.html#cb90-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>static)</span>
-<span id="cb90-8"><a href="W3_4_tasks_and_inputs.html#cb90-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-9"><a href="W3_4_tasks_and_inputs.html#cb90-9" aria-hidden="true" tabindex="-1"></a>sabi_filter<span class="sc">%&gt;%</span></span>
-<span id="cb90-10"><a href="W3_4_tasks_and_inputs.html#cb90-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(E, N))  <span class="sc">+</span></span>
-<span id="cb90-11"><a href="W3_4_tasks_and_inputs.html#cb90-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb90-12"><a href="W3_4_tasks_and_inputs.html#cb90-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb90-13"><a href="W3_4_tasks_and_inputs.html#cb90-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
-<span id="cb90-14"><a href="W3_4_tasks_and_inputs.html#cb90-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="W3_4_tasks_and_inputs.html#cb91-1" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span> </span>
+<span id="cb91-2"><a href="W3_4_tasks_and_inputs.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="W3_4_tasks_and_inputs.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">static =</span> stepMean <span class="sc">&lt;</span> <span class="fu">mean</span>(stepMean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb91-4"><a href="W3_4_tasks_and_inputs.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-5"><a href="W3_4_tasks_and_inputs.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="W3_4_tasks_and_inputs.html#cb91-6" aria-hidden="true" tabindex="-1"></a>sabi_filter <span class="ot">&lt;-</span> sabi <span class="sc">%&gt;%</span></span>
+<span id="cb91-7"><a href="W3_4_tasks_and_inputs.html#cb91-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>static)</span>
+<span id="cb91-8"><a href="W3_4_tasks_and_inputs.html#cb91-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-9"><a href="W3_4_tasks_and_inputs.html#cb91-9" aria-hidden="true" tabindex="-1"></a>sabi_filter<span class="sc">%&gt;%</span></span>
+<span id="cb91-10"><a href="W3_4_tasks_and_inputs.html#cb91-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(E, N))  <span class="sc">+</span></span>
+<span id="cb91-11"><a href="W3_4_tasks_and_inputs.html#cb91-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb91-12"><a href="W3_4_tasks_and_inputs.html#cb91-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb91-13"><a href="W3_4_tasks_and_inputs.html#cb91-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb91-14"><a href="W3_4_tasks_and_inputs.html#cb91-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="W3_4_tasks_and_inputs_files/figure-html/unnamed-chunk-6-1.png" alt="The trajectory of sabi, filtered to the positions where the animal was not static" width="672" />
 <p class="caption">
@@ -387,7 +387,7 @@ Figure 5: The trajectory of sabi, filtered to the positions where the animal was
 <div id="task-1-segmentation" class="section level3 hasAnchor">
 <h3>Task 1: Segmentation<a href="W3_4_tasks_and_inputs.html#task-1-segmentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already done so open the RStudio Project <a href="W3_3_preparation.html#w3-preparation">you have prepared</a> for this week.</p>
-<p>With the skills from the input above you can now implement the segmentation algorithm described in <span class="citation">Laube and Purves (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> on the dataset <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/caro60.csv">caro60.csv</a>. Download this dataset (right click &gt; save target as…) and import it as a simple <code>data.frame</code> or <code>tibble</code> (you don’t need an <code>sf</code>-object for today’s task).</p>
+<p>With the skills from the input above you can now implement the segmentation algorithm described in <span class="citation"><a href="90_references.html#ref-laube2011" role="doc-biblioref">Laube and Purves</a> (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span> on the dataset <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/caro60.csv">caro60.csv</a>. Download this dataset (right click &gt; save target as…) and import it as a simple <code>data.frame</code> or <code>tibble</code> (you don’t need an <code>sf</code>-object for today’s task).</p>
 <p>The sampling interval for this dataset is 1 minute. Use a temporal window <span class="math inline">\(v\)</span> of 6 minutes, i.e. a window size of 6 positions (<code>n±3</code>).</p>
 <p>Once you have completed the task, commit your changes with a meaningful commit message and test your connection to Github by pushing your changes to your remote repository.</p>
 </div>
@@ -405,32 +405,32 @@ Figure 5: The trajectory of sabi, filtered to the positions where the animal was
 </div>
 <div id="task-4-segment-based-analysis" class="section level3 hasAnchor">
 <h3>Task 4: Segment-based analysis<a href="W3_4_tasks_and_inputs.html#task-4-segment-based-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In applying <span class="citation">Laube and Purves (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span>, we’ve come as far as steps b in figure <a href="W3_4_tasks_and_inputs.html#fig:laubeimg">3</a>. In order to complete the last steps (c and d), we need a <em>unique</em> ID for each segment that we can use as a grouping variable. The following function does just that (it assigns unique IDs based on the column <code>static</code> which you created in Task 2). You will learn about functions next week. For now, just copy the following code chunk into your script and run it.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="W3_4_tasks_and_inputs.html#cb91-1" aria-hidden="true" tabindex="-1"></a>rle_id <span class="ot">&lt;-</span> <span class="cf">function</span>(vec){</span>
-<span id="cb91-2"><a href="W3_4_tasks_and_inputs.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rle</span>(vec)<span class="sc">$</span>lengths</span>
-<span id="cb91-3"><a href="W3_4_tasks_and_inputs.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">seq_along</span>(x), <span class="at">times=</span>x))</span>
-<span id="cb91-4"><a href="W3_4_tasks_and_inputs.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>In applying <span class="citation"><a href="90_references.html#ref-laube2011" role="doc-biblioref">Laube and Purves</a> (<a href="90_references.html#ref-laube2011" role="doc-biblioref">2011</a>)</span>, we’ve come as far as steps b in figure <a href="W3_4_tasks_and_inputs.html#fig:laubeimg">3</a>. In order to complete the last steps (c and d), we need a <em>unique</em> ID for each segment that we can use as a grouping variable. The following function does just that (it assigns unique IDs based on the column <code>static</code> which you created in Task 2). You will learn about functions next week. For now, just copy the following code chunk into your script and run it.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="W3_4_tasks_and_inputs.html#cb92-1" aria-hidden="true" tabindex="-1"></a>rle_id <span class="ot">&lt;-</span> <span class="cf">function</span>(vec){</span>
+<span id="cb92-2"><a href="W3_4_tasks_and_inputs.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rle</span>(vec)<span class="sc">$</span>lengths</span>
+<span id="cb92-3"><a href="W3_4_tasks_and_inputs.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">seq_along</span>(x), <span class="at">times=</span>x))</span>
+<span id="cb92-4"><a href="W3_4_tasks_and_inputs.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <p>You can use the newly created function <code>rle_id</code> to assign unique IDs to subtrajectories (as shown below). Visualize the <em>moving</em> segments by colourizing them by <code>segment_ID</code>.
 Then use <code>segment_ID</code> as a grouping variable to determine the segments duration and remove short segments (e.g. segments with a duration &lt; 5 Minutes)</p>
 <p>Commit your changes with a meaningful commit message.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="W3_4_tasks_and_inputs.html#cb92-1" aria-hidden="true" tabindex="-1"></a>caro60 <span class="ot">&lt;-</span> caro60 <span class="sc">%&gt;%</span></span>
-<span id="cb92-2"><a href="W3_4_tasks_and_inputs.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">segment_id =</span> <span class="fu">rle_id</span>(static))</span>
-<span id="cb92-3"><a href="W3_4_tasks_and_inputs.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-4"><a href="W3_4_tasks_and_inputs.html#cb92-4" aria-hidden="true" tabindex="-1"></a>caro60</span>
-<span id="cb92-5"><a href="W3_4_tasks_and_inputs.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 200 × 9</span></span>
-<span id="cb92-6"><a href="W3_4_tasks_and_inputs.html#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    TierID TierName CollarID DatetimeUTC                E       N stepMean static</span></span>
-<span id="cb92-7"><a href="W3_4_tasks_and_inputs.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;                 &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt; </span></span>
-<span id="cb92-8"><a href="W3_4_tasks_and_inputs.html#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589.  1.21e6    NA    NA    </span></span>
-<span id="cb92-9"><a href="W3_4_tasks_and_inputs.html#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 010C   Caro        13973 2015-09-15 08:08:00 2570573.  1.21e6    NA    NA    </span></span>
-<span id="cb92-10"><a href="W3_4_tasks_and_inputs.html#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 010C   Caro        13973 2015-09-15 08:09:00 2570536.  1.21e6    NA    NA    </span></span>
-<span id="cb92-11"><a href="W3_4_tasks_and_inputs.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 010C   Caro        13973 2015-09-15 08:10:00 2570518.  1.21e6    53.8  FALSE </span></span>
-<span id="cb92-12"><a href="W3_4_tasks_and_inputs.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 010C   Caro        13973 2015-09-15 08:11:00 2570499.  1.21e6    41.2  FALSE </span></span>
-<span id="cb92-13"><a href="W3_4_tasks_and_inputs.html#cb92-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 010C   Caro        13973 2015-09-15 08:12:00 2570489.  1.21e6    24.4  FALSE </span></span>
-<span id="cb92-14"><a href="W3_4_tasks_and_inputs.html#cb92-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 010C   Caro        13973 2015-09-15 08:13:00 2570482.  1.21e6    17.1  FALSE </span></span>
-<span id="cb92-15"><a href="W3_4_tasks_and_inputs.html#cb92-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 010C   Caro        13973 2015-09-15 08:14:00 2570481.  1.21e6    13.4  FALSE </span></span>
-<span id="cb92-16"><a href="W3_4_tasks_and_inputs.html#cb92-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 010C   Caro        13973 2015-09-15 08:15:00 2570486.  1.21e6     9.05 FALSE </span></span>
-<span id="cb92-17"><a href="W3_4_tasks_and_inputs.html#cb92-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 010C   Caro        13973 2015-09-15 08:16:00 2570490.  1.21e6    10.1  FALSE </span></span>
-<span id="cb92-18"><a href="W3_4_tasks_and_inputs.html#cb92-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 190 more rows, and 1 more variable: segment_id &lt;fct&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="W3_4_tasks_and_inputs.html#cb93-1" aria-hidden="true" tabindex="-1"></a>caro60 <span class="ot">&lt;-</span> caro60 <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="W3_4_tasks_and_inputs.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">segment_id =</span> <span class="fu">rle_id</span>(static))</span>
+<span id="cb93-3"><a href="W3_4_tasks_and_inputs.html#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-4"><a href="W3_4_tasks_and_inputs.html#cb93-4" aria-hidden="true" tabindex="-1"></a>caro60</span>
+<span id="cb93-5"><a href="W3_4_tasks_and_inputs.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 200 x 9</span></span>
+<span id="cb93-6"><a href="W3_4_tasks_and_inputs.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    TierID TierName CollarID DatetimeUTC                E       N stepMean static</span></span>
+<span id="cb93-7"><a href="W3_4_tasks_and_inputs.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;                 &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt; </span></span>
+<span id="cb93-8"><a href="W3_4_tasks_and_inputs.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 010C   Caro        13973 2015-09-15 08:07:00 2570589.  1.21e6    NA    NA    </span></span>
+<span id="cb93-9"><a href="W3_4_tasks_and_inputs.html#cb93-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 010C   Caro        13973 2015-09-15 08:08:00 2570573.  1.21e6    NA    NA    </span></span>
+<span id="cb93-10"><a href="W3_4_tasks_and_inputs.html#cb93-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 010C   Caro        13973 2015-09-15 08:09:00 2570536.  1.21e6    NA    NA    </span></span>
+<span id="cb93-11"><a href="W3_4_tasks_and_inputs.html#cb93-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 010C   Caro        13973 2015-09-15 08:10:00 2570518.  1.21e6    53.8  FALSE </span></span>
+<span id="cb93-12"><a href="W3_4_tasks_and_inputs.html#cb93-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 010C   Caro        13973 2015-09-15 08:11:00 2570499.  1.21e6    41.2  FALSE </span></span>
+<span id="cb93-13"><a href="W3_4_tasks_and_inputs.html#cb93-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 010C   Caro        13973 2015-09-15 08:12:00 2570489.  1.21e6    24.4  FALSE </span></span>
+<span id="cb93-14"><a href="W3_4_tasks_and_inputs.html#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 010C   Caro        13973 2015-09-15 08:13:00 2570482.  1.21e6    17.1  FALSE </span></span>
+<span id="cb93-15"><a href="W3_4_tasks_and_inputs.html#cb93-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 010C   Caro        13973 2015-09-15 08:14:00 2570481.  1.21e6    13.4  FALSE </span></span>
+<span id="cb93-16"><a href="W3_4_tasks_and_inputs.html#cb93-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 010C   Caro        13973 2015-09-15 08:15:00 2570486.  1.21e6     9.05 FALSE </span></span>
+<span id="cb93-17"><a href="W3_4_tasks_and_inputs.html#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 010C   Caro        13973 2015-09-15 08:16:00 2570490.  1.21e6    10.1  FALSE </span></span>
+<span id="cb93-18"><a href="W3_4_tasks_and_inputs.html#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ... with 190 more rows, and 1 more variable: segment_id &lt;fct&gt;</span></span></code></pre></div>
 <p><img src="W3_4_tasks_and_inputs_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="task-5-similarity-measures" class="section level3 hasAnchor">
@@ -443,11 +443,11 @@ Then use <code>segment_ID</code> as a grouping variable to determine the segment
 <div id="task-6-calculate-similarity" class="section level3 hasAnchor">
 <h3>Task 6: Calculate similarity<a href="W3_4_tasks_and_inputs.html#task-6-calculate-similarity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Install the package <code>SimilarityMeasures</code> (<code>install.packages("SimilarityMeasures")</code>). Familiarize yourself with this package by skimming through the function descriptions <code>help(package = "SimilarityMeasures")</code>. Now compare trajectory 1 to trajectories 2-6 using different similarity measures from the package. Your options are. <code>DTW</code>, <code>EditDist</code>, <code>Frechet</code> and <code>LCSS</code>.</p>
-<p>Visualize your results and try to understand the different results with respect to your reading of <span class="citation">Alan Both (<a href="90_references.html#ref-both2018" role="doc-biblioref">2018</a>)</span>. Can you see connections between the properties of the trajectories and the similarity values computed by the different measures?</p>
+<p>Visualize your results and try to understand the different results with respect to your reading of <span class="citation"><a href="90_references.html#ref-both2018" role="doc-biblioref">Alan Both</a> (<a href="90_references.html#ref-both2018" role="doc-biblioref">2018</a>)</span>. Can you see connections between the properties of the trajectories and the similarity values computed by the different measures?</p>
 <p>Note:</p>
 <ul>
 <li>All functions in the package need matrices as input, with one trajectory per matrix.</li>
-<li><code>LCSS</code>takes very long to compute. The accuracy of the algorithm (<code>pointSpacing =</code> ,<code>pointDistance =</code> and <code>errorMarg =</code>) can be varied to provide faster calculations. Please see <span class="citation">Vlachos, Gunopoulos, and Kollios (<a href="90_references.html#ref-vlachos2002" role="doc-biblioref">2002</a>)</span> for more information.</li>
+<li><code>LCSS</code>takes very long to compute. The accuracy of the algorithm (<code>pointSpacing =</code> ,<code>pointDistance =</code> and <code>errorMarg =</code>) can be varied to provide faster calculations. Please see <span class="citation"><a href="90_references.html#ref-vlachos2002" role="doc-biblioref">Vlachos, Gunopoulos, and Kollios</a> (<a href="90_references.html#ref-vlachos2002" role="doc-biblioref">2002</a>)</span> for more information.</li>
 </ul>
 <p>Commit your changes with a meaningful commit message. Now push all your changes to Github.</p>
 <p><img src="W3_4_tasks_and_inputs_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>

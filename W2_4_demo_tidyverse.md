@@ -22,7 +22,7 @@ later
 ```
 
 ```
-## [1] "2022-05-04 15:28:14 UTC"
+## [1] "2022-05-26 11:07:58 CEST"
 ```
 
 ```r
@@ -127,17 +127,17 @@ library(dplyr)
 
 ```
 ## 
-## Attaching package: 'dplyr'
+## Attache Paket: 'dplyr'
 ```
 
 ```
-## The following objects are masked from 'package:stats':
+## Die folgenden Objekte sind maskiert von 'package:stats':
 ## 
 ##     filter, lag
 ```
 
 ```
-## The following objects are masked from 'package:base':
+## Die folgenden Objekte sind maskiert von 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
 ```
@@ -200,7 +200,7 @@ wildschwein
 ```
 
 ```
-## # A tibble: 10 × 2
+## # A tibble: 10 x 2
 ##    TierID DatetimeUTC        
 ##    <chr>  <dttm>             
 ##  1 Hans   2015-01-01 00:00:00
@@ -233,7 +233,7 @@ wildschwein
 ```
 
 ```
-## # A tibble: 10 × 3
+## # A tibble: 10 x 3
 ##    TierID DatetimeUTC         timelag
 ##    <chr>  <dttm>                <dbl>
 ##  1 Hans   2015-01-01 00:00:00      15
@@ -270,7 +270,7 @@ wildschwein
 ```
 
 ```
-## # A tibble: 10 × 3
+## # A tibble: 10 x 3
 ## # Groups:   TierID [2]
 ##    TierID DatetimeUTC         timelag
 ##    <chr>  <dttm>                <dbl>
@@ -298,7 +298,7 @@ summarise(wildschwein, mean = mean(timelag, na.rm = T))
 ```
 
 ```
-## # A tibble: 2 × 2
+## # A tibble: 2 x 2
 ##   TierID  mean
 ##   <chr>  <dbl>
 ## 1 Hans      15
@@ -321,7 +321,7 @@ wildschwein %>%                           # Take wildschwein...
 ```
 
 ```
-## # A tibble: 2 × 2
+## # A tibble: 2 x 2
 ##   TierID mean_timelag
 ##   <chr>         <dbl>
 ## 1 Hans             15
@@ -346,7 +346,7 @@ pigs
 ```
 
 ```
-## # A tibble: 12 × 4
+## # A tibble: 12 x 4
 ##    TierID sex   age   weight
 ##     <dbl> <chr> <chr>  <dbl>
 ##  1   8001 M     A       50.8
@@ -371,7 +371,7 @@ pigs %>%
 ```
 
 ```
-## # A tibble: 1 × 1
+## # A tibble: 1 x 1
 ##   mean_weight
 ##         <dbl>
 ## 1        31.6
@@ -386,7 +386,7 @@ pigs %>%
 ```
 
 ```
-## # A tibble: 2 × 2
+## # A tibble: 2 x 2
 ##   sex   mean_weight
 ##   <chr>       <dbl>
 ## 1 F            40.5
@@ -402,12 +402,11 @@ pigs %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'sex'. You can override using the `.groups`
-## argument.
+## `summarise()` has grouped output by 'sex'. You can override using the `.groups` argument.
 ```
 
 ```
-## # A tibble: 4 × 3
+## # A tibble: 4 x 3
 ## # Groups:   sex [2]
 ##   sex   age   mean_weight
 ##   <chr> <chr>       <dbl>

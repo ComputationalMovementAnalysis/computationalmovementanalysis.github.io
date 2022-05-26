@@ -57,7 +57,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -220,6 +219,7 @@ div.csl-indent {
 <li><a href="W2_5_tasks_and_inputs.html#task-5-deriving-movement-parameters-ii-rolling-window-functions">Task 5: Deriving movement parameters II: Rolling window functions<span></span></a></li>
 <li><a href="W2_5_tasks_and_inputs.html#submission">Submission<span></span></a></li>
 </ul></li>
+<li><a href="W2_6_solutions.html#solutions-1">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="W3_1_exercise.html#exercise-3">Exercise 3<span></span></a>
 <ul>
@@ -320,9 +320,9 @@ This will create a “normal” RStudio Project <em>without</em> Git version con
 <div id="step-3-rename-branch" class="section level3 hasAnchor">
 <h3>Step 3: Rename branch<a href="W3_3_preparation.html#step-3-rename-branch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In your Git pane, you will see that you do not have a branch yet, it says <code>(no branch)</code> in the top right corner. But what is branch?</p>
-<p>Branches are a way to have multiple versions of your project, which is especially useful if you want to do experiments that you are unsure about. We will not cover branches in this course, but it’s important that you have heard of the term, since its considered to be Git’s “Killer feature”.</p>
+<p>Branches are a way to have multiple versions of your project, which is especially useful if you want to do experiments that you are unsure about. We will not cover branches in this course, but it’s important that you have heard of the term, since its considered to be Git’s “Killer feature.”</p>
 <p>Once you make your first commit, Git will automatically create a branch named <code>master</code>. Test this by committing the<code>.gitignore</code> and <code>...*.Rproj</code>-File.
-<code>master</code> is just a convention for the main (and maybe only) version of your project. Since 2020, there are efforts to avoid offensive jargon in tech, including the term “master”. In this effort, Github has switched to using <code>main</code> as the name for the main branch, while Git still uses <code>master</code>. We can rename our <code>master</code> branch to <code>main</code> with the following line of code (note that you must have committed something first):</p>
+<code>master</code> is just a convention for the main (and maybe only) version of your project. Since 2020, there are efforts to avoid offensive jargon in tech, including the term “master.” In this effort, Github has switched to using <code>main</code> as the name for the main branch, while Git still uses <code>master</code>. We can rename our <code>master</code> branch to <code>main</code> with the following line of code (note that you must have committed something first):</p>
 <pre><code>git branch -M main</code></pre>
 </div>
 <div id="create-github-repo-2" class="section level3 hasAnchor">
