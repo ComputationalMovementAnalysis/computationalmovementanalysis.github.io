@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data</title>
-  <meta name="description" content="Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
+  <title>Solutions | Computational Movement Analysis: Patterns and Trends in Environmental Data</title>
+  <meta name="description" content="Solutions | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
+  <meta property="og:title" content="Solutions | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ComputationalMovementAnalysis/FS21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preparation | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
+  <meta name="twitter:title" content="Solutions | Computational Movement Analysis: Patterns and Trends in Environmental Data" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="W5_1_exercise.html"/>
-<link rel="next" href="W5_3_tasks_and_inputs.html"/>
+<link rel="prev" href="W5_3_tasks_and_inputs.html"/>
+<link rel="next" href="90_references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -293,11 +293,108 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="w5-preperation" class="section level2 hasAnchor">
-<h2>Preparation<a href="W5_2_preparation.html#w5-preperation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Create a new RStudio Project and a new Github Repo for this week’s exercises. Do this either the simple way we used in Exercise 2 (<a href="W2_3_preparation.html#create-github-repo">Step 3</a> and then <a href="W2_3_preparation.html#w2-project">Step 4</a>) or the more sophisticated way we suggested in <a href="W3_3_preparation.html#w3-preparation">Exercise 3</a>.</p>
-<p>If you want to publish your Report as a website (to share with others), activate Github Pages by going to your repo on Github, clicking on <em>Settings &gt; Pages</em>, and under <em>Source</em> switch from <em>None</em> to your Main branch. <strong>You can do this only after pushing your first commit</strong>.</p>
+<div id="solutions-4" class="section level2 hasAnchor">
+<h2>Solutions<a href="W5_4_solutions.html#solutions-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hover over the code and copy the content by clicking on the clipboard icon on the top right. You can now paste this into an R-Script.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="W5_4_solutions.html#cb107-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-2"><a href="W5_4_solutions.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co"># task 1 ########################################################################</span></span>
+<span id="cb107-3"><a href="W5_4_solutions.html#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-4"><a href="W5_4_solutions.html#cb107-4" aria-hidden="true" tabindex="-1"></a>crop_fanel <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;00_Rawdata/Feldaufnahmen_Fanel.gpkg&quot;</span>)</span>
+<span id="cb107-5"><a href="W5_4_solutions.html#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-6"><a href="W5_4_solutions.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(crop_fanel)</span>
+<span id="cb107-7"><a href="W5_4_solutions.html#cb107-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-8"><a href="W5_4_solutions.html#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(crop_fanel)</span>
+<span id="cb107-9"><a href="W5_4_solutions.html#cb107-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-10"><a href="W5_4_solutions.html#cb107-10" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(crop_fanel<span class="sc">$</span>Frucht)</span>
+<span id="cb107-11"><a href="W5_4_solutions.html#cb107-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-12"><a href="W5_4_solutions.html#cb107-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(crop_fanel)</span>
+<span id="cb107-13"><a href="W5_4_solutions.html#cb107-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-14"><a href="W5_4_solutions.html#cb107-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(crop_fanel) <span class="sc">+</span></span>
+<span id="cb107-15"><a href="W5_4_solutions.html#cb107-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Frucht))</span>
+<span id="cb107-16"><a href="W5_4_solutions.html#cb107-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-17"><a href="W5_4_solutions.html#cb107-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-18"><a href="W5_4_solutions.html#cb107-18" aria-hidden="true" tabindex="-1"></a><span class="co"># task 2 ########################################################################</span></span>
+<span id="cb107-19"><a href="W5_4_solutions.html#cb107-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-20"><a href="W5_4_solutions.html#cb107-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-21"><a href="W5_4_solutions.html#cb107-21" aria-hidden="true" tabindex="-1"></a>wildschwein_summer <span class="ot">&lt;-</span> wildschwein_BE <span class="sc">%&gt;%</span></span>
+<span id="cb107-22"><a href="W5_4_solutions.html#cb107-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">month</span>(DatetimeUTC) <span class="sc">%in%</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb107-23"><a href="W5_4_solutions.html#cb107-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb107-24"><a href="W5_4_solutions.html#cb107-24" aria-hidden="true" tabindex="-1"></a>wildschwein_summer <span class="ot">&lt;-</span>  <span class="fu">st_join</span>(wildschwein_summer, crop_fanel)</span>
+<span id="cb107-25"><a href="W5_4_solutions.html#cb107-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-26"><a href="W5_4_solutions.html#cb107-26" aria-hidden="true" tabindex="-1"></a>wildschwein_summer</span>
+<span id="cb107-27"><a href="W5_4_solutions.html#cb107-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-28"><a href="W5_4_solutions.html#cb107-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(crop_fanel) <span class="sc">+</span></span>
+<span id="cb107-29"><a href="W5_4_solutions.html#cb107-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Frucht)) <span class="sc">+</span></span>
+<span id="cb107-30"><a href="W5_4_solutions.html#cb107-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wildschwein_summer)</span>
+<span id="cb107-31"><a href="W5_4_solutions.html#cb107-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-32"><a href="W5_4_solutions.html#cb107-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-33"><a href="W5_4_solutions.html#cb107-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-34"><a href="W5_4_solutions.html#cb107-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-35"><a href="W5_4_solutions.html#cb107-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-36"><a href="W5_4_solutions.html#cb107-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-37"><a href="W5_4_solutions.html#cb107-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-38"><a href="W5_4_solutions.html#cb107-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-39"><a href="W5_4_solutions.html#cb107-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-40"><a href="W5_4_solutions.html#cb107-40" aria-hidden="true" tabindex="-1"></a><span class="co"># task 3 ########################################################################</span></span>
+<span id="cb107-41"><a href="W5_4_solutions.html#cb107-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-42"><a href="W5_4_solutions.html#cb107-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-43"><a href="W5_4_solutions.html#cb107-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb107-44"><a href="W5_4_solutions.html#cb107-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-45"><a href="W5_4_solutions.html#cb107-45" aria-hidden="true" tabindex="-1"></a>wildschwein_smry <span class="ot">&lt;-</span> wildschwein_summer <span class="sc">%&gt;%</span></span>
+<span id="cb107-46"><a href="W5_4_solutions.html#cb107-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_geometry</span>(<span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb107-47"><a href="W5_4_solutions.html#cb107-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb107-48"><a href="W5_4_solutions.html#cb107-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">round_date</span>(DatetimeUTC,<span class="st">&quot;hour&quot;</span>)),</span>
+<span id="cb107-49"><a href="W5_4_solutions.html#cb107-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">Frucht =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Frucht),<span class="st">&quot;other&quot;</span>,Frucht),</span>
+<span id="cb107-50"><a href="W5_4_solutions.html#cb107-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">Frucht =</span> <span class="fu">fct_lump</span>(Frucht, <span class="dv">5</span>,<span class="at">other_level =</span> <span class="st">&quot;other&quot;</span>),</span>
+<span id="cb107-51"><a href="W5_4_solutions.html#cb107-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb107-52"><a href="W5_4_solutions.html#cb107-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TierName ,hour,Frucht) <span class="sc">%&gt;%</span></span>
+<span id="cb107-53"><a href="W5_4_solutions.html#cb107-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb107-54"><a href="W5_4_solutions.html#cb107-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb107-55"><a href="W5_4_solutions.html#cb107-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TierName , hour) <span class="sc">%&gt;%</span></span>
+<span id="cb107-56"><a href="W5_4_solutions.html#cb107-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb107-57"><a href="W5_4_solutions.html#cb107-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb107-58"><a href="W5_4_solutions.html#cb107-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb107-59"><a href="W5_4_solutions.html#cb107-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">Frucht =</span> <span class="fu">fct_reorder</span>(Frucht, n,sum, <span class="at">desc =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb107-60"><a href="W5_4_solutions.html#cb107-60" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb107-61"><a href="W5_4_solutions.html#cb107-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-62"><a href="W5_4_solutions.html#cb107-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-63"><a href="W5_4_solutions.html#cb107-63" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(wildschwein_smry, <span class="fu">aes</span>(hour,perc, <span class="at">fill =</span> Frucht)) <span class="sc">+</span></span>
+<span id="cb107-64"><a href="W5_4_solutions.html#cb107-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb107-65"><a href="W5_4_solutions.html#cb107-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Percentage&quot;</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb107-66"><a href="W5_4_solutions.html#cb107-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Time (rounded to the nearest hour)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb107-67"><a href="W5_4_solutions.html#cb107-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>TierName ) <span class="sc">+</span></span>
+<span id="cb107-68"><a href="W5_4_solutions.html#cb107-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb107-69"><a href="W5_4_solutions.html#cb107-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Percentages of samples in a given crop per hour&quot;</span>,<span class="at">subtitle =</span> <span class="st">&quot;Only showing the most common categories&quot;</span>)</span>
+<span id="cb107-70"><a href="W5_4_solutions.html#cb107-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-71"><a href="W5_4_solutions.html#cb107-71" aria-hidden="true" tabindex="-1"></a>p1</span>
+<span id="cb107-72"><a href="W5_4_solutions.html#cb107-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-73"><a href="W5_4_solutions.html#cb107-73" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span></span>
+<span id="cb107-74"><a href="W5_4_solutions.html#cb107-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>()  <span class="sc">+</span></span>
+<span id="cb107-75"><a href="W5_4_solutions.html#cb107-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">&quot;Same visualization as above, displayed in a polar plot&quot;</span>)</span>
+<span id="cb107-76"><a href="W5_4_solutions.html#cb107-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-77"><a href="W5_4_solutions.html#cb107-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-78"><a href="W5_4_solutions.html#cb107-78" aria-hidden="true" tabindex="-1"></a><span class="co"># task 4 ########################################################################</span></span>
+<span id="cb107-79"><a href="W5_4_solutions.html#cb107-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-80"><a href="W5_4_solutions.html#cb107-80" aria-hidden="true" tabindex="-1"></a>veg_height <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;00_Rawdata/vegetationshoehe_LFI.tif&quot;</span>)</span>
+<span id="cb107-81"><a href="W5_4_solutions.html#cb107-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-82"><a href="W5_4_solutions.html#cb107-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-83"><a href="W5_4_solutions.html#cb107-83" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(veg_height) <span class="sc">+</span> </span>
+<span id="cb107-84"><a href="W5_4_solutions.html#cb107-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>(<span class="at">palette =</span> <span class="st">&quot;viridis&quot;</span>,<span class="at">style =</span> <span class="st">&quot;cont&quot;</span>, <span class="at">legend.is.portrait =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb107-85"><a href="W5_4_solutions.html#cb107-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> <span class="cn">TRUE</span>,<span class="at">legend.outside.position =</span> <span class="st">&quot;bottom&quot;</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb107-86"><a href="W5_4_solutions.html#cb107-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-87"><a href="W5_4_solutions.html#cb107-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-88"><a href="W5_4_solutions.html#cb107-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-89"><a href="W5_4_solutions.html#cb107-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-90"><a href="W5_4_solutions.html#cb107-90" aria-hidden="true" tabindex="-1"></a><span class="co"># task 5 ########################################################################</span></span>
+<span id="cb107-91"><a href="W5_4_solutions.html#cb107-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-92"><a href="W5_4_solutions.html#cb107-92" aria-hidden="true" tabindex="-1"></a>veg_height_df <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(veg_height,<span class="fu">st_coordinates</span>(wildschwein_BE))</span>
+<span id="cb107-93"><a href="W5_4_solutions.html#cb107-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-94"><a href="W5_4_solutions.html#cb107-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-95"><a href="W5_4_solutions.html#cb107-95" aria-hidden="true" tabindex="-1"></a>wildschwein_BE <span class="ot">&lt;-</span> <span class="fu">cbind</span>(wildschwein_BE,veg_height_df)</span>
+<span id="cb107-96"><a href="W5_4_solutions.html#cb107-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-97"><a href="W5_4_solutions.html#cb107-97" aria-hidden="true" tabindex="-1"></a>wildschwein_BE</span></code></pre></div>
 
+</div>
 </div>
 <script src="https://utteranc.es/client.js"
         repo="ComputationalMovementAnalysis/utterances"
@@ -311,8 +408,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="W5_1_exercise.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="W5_3_tasks_and_inputs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="W5_3_tasks_and_inputs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="90_references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -333,7 +430,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ComputationalMovementAnalysis/FS22/edit/main/W5_2_preparation.Rmd",
+"link": "https://github.com/ComputationalMovementAnalysis/FS22/edit/main/W5_4_solutions.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -341,7 +438,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ComputationalMovementAnalysis/FS22/blob/main/W5_2_preparation.Rmd",
+"link": "https://github.com/ComputationalMovementAnalysis/FS22/blob/main/W5_4_solutions.Rmd",
 "text": null
 },
 "download": null,

@@ -2,7 +2,7 @@
 title: "Computational Movement Analysis: Patterns and Trends in Environmental Data"
 subtitle: "Master ENR, Spring Semester 2022"
 author: "Patrick Laube, Nils Ratnaweera, Nikolaos Bakogiannis"
-date: "01 Juni, 2022"
+date: "03 Juni, 2022"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: ["00_Admin/bibliography.bib"]

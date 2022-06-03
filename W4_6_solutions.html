@@ -217,6 +217,7 @@ div.csl-indent {
 <li><a href="W2_5_tasks_and_inputs.html#w2-task2">Task 3: Deriving movement parameters I: Speed<span></span></a></li>
 <li><a href="W2_5_tasks_and_inputs.html#task-4-cross-scale-movement-analysis">Task 4: Cross-scale movement analysis<span></span></a></li>
 <li><a href="W2_5_tasks_and_inputs.html#task-5-deriving-movement-parameters-ii-rolling-window-functions">Task 5: Deriving movement parameters II: Rolling window functions<span></span></a></li>
+<li><a href="W2_5_tasks_and_inputs.html#submission">Submission<span></span></a></li>
 </ul></li>
 <li><a href="W2_6_solutions.html#solutions-1">Solutions<span></span></a></li>
 </ul></li>
@@ -227,7 +228,7 @@ div.csl-indent {
 <li><a href="W3_3_preparation.html#step-1-create-a-normal-rstudio-project">Step 1: Create a “normal” RStudio Project<span></span></a></li>
 <li><a href="W3_3_preparation.html#step-2-activate-git-version-control">Step 2: Activate Git Version Control<span></span></a></li>
 <li><a href="W3_3_preparation.html#step-3-rename-branch">Step 3: Rename branch<span></span></a></li>
-<li><a href="W3_3_preparation.html#step-4-create-a-github-repository">Step 4: Create a Github Repository<span></span></a></li>
+<li><a href="W3_3_preparation.html#create-github-repo-2">Step 4: Create a Github Repository<span></span></a></li>
 <li><a href="W3_3_preparation.html#step-5-connect-to-github">Step 5: Connect to Github<span></span></a></li>
 </ul></li>
 <li><a href="W3_4_tasks_and_inputs.html#tasks-and-inputs-1">Tasks and Inputs<span></span></a>
@@ -238,6 +239,7 @@ div.csl-indent {
 <li><a href="W3_4_tasks_and_inputs.html#task-4-segment-based-analysis">Task 4: Segment-based analysis<span></span></a></li>
 <li><a href="W3_4_tasks_and_inputs.html#task-5-similarity-measures">Task 5: Similarity measures<span></span></a></li>
 <li><a href="W3_4_tasks_and_inputs.html#task-6-calculate-similarity">Task 6: Calculate similarity<span></span></a></li>
+<li><a href="W3_4_tasks_and_inputs.html#submission-1">Submission<span></span></a></li>
 </ul></li>
 <li><a href="W3_5_peer_feedback.html#peer-feedback">Peer Feedback<span></span></a></li>
 <li><a href="W3_5_solutions.html#solutions-2">Solutions<span></span></a></li>
@@ -268,6 +270,7 @@ div.csl-indent {
 <li><a href="W5_3_tasks_and_inputs.html#task-4-import-and-visualize-vegetationindex-raster-data">Task 4: Import and visualize vegetationindex (raster data)<span></span></a></li>
 <li><a href="W5_3_tasks_and_inputs.html#task-5-annotate-trajectories-from-raster-data">Task 5: Annotate Trajectories from raster data<span></span></a></li>
 </ul></li>
+<li><a href="W5_4_solutions.html#solutions-4">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="90_references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -293,104 +296,104 @@ div.csl-indent {
 <div id="solutions-3" class="section level2 hasAnchor">
 <h2>Solutions<a href="W4_6_solutions.html#solutions-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hover over the code and copy the content by clicking on the clipboard icon on the top right. You can now paste this into an R-Script.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="W4_6_solutions.html#cb97-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-2"><a href="W4_6_solutions.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># task 1 ########################################################################</span></span>
-<span id="cb97-3"><a href="W4_6_solutions.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-4"><a href="W4_6_solutions.html#cb97-4" aria-hidden="true" tabindex="-1"></a>euclid <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y,<span class="at">leadval =</span> <span class="dv">1</span>){</span>
-<span id="cb97-5"><a href="W4_6_solutions.html#cb97-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>((x<span class="sc">-</span><span class="fu">lead</span>(x,leadval))<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(y<span class="sc">-</span><span class="fu">lead</span>(y,leadval))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb97-6"><a href="W4_6_solutions.html#cb97-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb97-7"><a href="W4_6_solutions.html#cb97-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-8"><a href="W4_6_solutions.html#cb97-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-9"><a href="W4_6_solutions.html#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="co"># task 2 ########################################################################</span></span>
-<span id="cb97-10"><a href="W4_6_solutions.html#cb97-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-11"><a href="W4_6_solutions.html#cb97-11" aria-hidden="true" tabindex="-1"></a>wildschwein <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;00_Rawdata/wildschwein_BE_2056.csv&quot;</span>,<span class="st">&quot;,&quot;</span>)</span>
-<span id="cb97-12"><a href="W4_6_solutions.html#cb97-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-13"><a href="W4_6_solutions.html#cb97-13" aria-hidden="true" tabindex="-1"></a>wildschwein_filter <span class="ot">&lt;-</span> wildschwein <span class="sc">%&gt;%</span></span>
-<span id="cb97-14"><a href="W4_6_solutions.html#cb97-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DatetimeUTC <span class="sc">&gt;</span> <span class="st">&quot;2015-04-01&quot;</span>,</span>
-<span id="cb97-15"><a href="W4_6_solutions.html#cb97-15" aria-hidden="true" tabindex="-1"></a>         DatetimeUTC <span class="sc">&lt;</span> <span class="st">&quot;2015-04-15&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-16"><a href="W4_6_solutions.html#cb97-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TierName <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Rosa&quot;</span>, <span class="st">&quot;Sabi&quot;</span>))</span>
-<span id="cb97-17"><a href="W4_6_solutions.html#cb97-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-18"><a href="W4_6_solutions.html#cb97-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-19"><a href="W4_6_solutions.html#cb97-19" aria-hidden="true" tabindex="-1"></a><span class="co"># task 3 ########################################################################</span></span>
-<span id="cb97-20"><a href="W4_6_solutions.html#cb97-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-21"><a href="W4_6_solutions.html#cb97-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-22"><a href="W4_6_solutions.html#cb97-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-23"><a href="W4_6_solutions.html#cb97-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-24"><a href="W4_6_solutions.html#cb97-24" aria-hidden="true" tabindex="-1"></a>wildschwein_filter <span class="ot">&lt;-</span> wildschwein_filter <span class="sc">%&gt;%</span></span>
-<span id="cb97-25"><a href="W4_6_solutions.html#cb97-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TierID) <span class="sc">%&gt;%</span></span>
-<span id="cb97-26"><a href="W4_6_solutions.html#cb97-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb97-27"><a href="W4_6_solutions.html#cb97-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">DatetimeRound =</span> lubridate<span class="sc">::</span><span class="fu">round_date</span>(DatetimeUTC,<span class="st">&quot;15 minutes&quot;</span>)</span>
-<span id="cb97-28"><a href="W4_6_solutions.html#cb97-28" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb97-29"><a href="W4_6_solutions.html#cb97-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-30"><a href="W4_6_solutions.html#cb97-30" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wildschwein_filter)</span>
-<span id="cb97-31"><a href="W4_6_solutions.html#cb97-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-32"><a href="W4_6_solutions.html#cb97-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-33"><a href="W4_6_solutions.html#cb97-33" aria-hidden="true" tabindex="-1"></a><span class="co"># task 4 ########################################################################</span></span>
-<span id="cb97-34"><a href="W4_6_solutions.html#cb97-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-35"><a href="W4_6_solutions.html#cb97-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb97-36"><a href="W4_6_solutions.html#cb97-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-37"><a href="W4_6_solutions.html#cb97-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-38"><a href="W4_6_solutions.html#cb97-38" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> wildschwein_filter <span class="sc">%&gt;%</span></span>
-<span id="cb97-39"><a href="W4_6_solutions.html#cb97-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">&quot;Sabi&quot;</span>)</span>
-<span id="cb97-40"><a href="W4_6_solutions.html#cb97-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-41"><a href="W4_6_solutions.html#cb97-41" aria-hidden="true" tabindex="-1"></a>rosa <span class="ot">&lt;-</span> wildschwein_filter <span class="sc">%&gt;%</span></span>
-<span id="cb97-42"><a href="W4_6_solutions.html#cb97-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">&quot;Rosa&quot;</span>)</span>
-<span id="cb97-43"><a href="W4_6_solutions.html#cb97-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-44"><a href="W4_6_solutions.html#cb97-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-45"><a href="W4_6_solutions.html#cb97-45" aria-hidden="true" tabindex="-1"></a>wildschwein_join <span class="ot">&lt;-</span> <span class="fu">full_join</span>(sabi, rosa, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;DatetimeRound&quot;</span>), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;_sabi&quot;</span>,<span class="st">&quot;_rosa&quot;</span>))</span>
-<span id="cb97-46"><a href="W4_6_solutions.html#cb97-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-47"><a href="W4_6_solutions.html#cb97-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-48"><a href="W4_6_solutions.html#cb97-48" aria-hidden="true" tabindex="-1"></a>wildschwein_join <span class="ot">&lt;-</span> wildschwein_join <span class="sc">%&gt;%</span></span>
-<span id="cb97-49"><a href="W4_6_solutions.html#cb97-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb97-50"><a href="W4_6_solutions.html#cb97-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance =</span> <span class="fu">sqrt</span>((E_rosa<span class="sc">-</span>E_sabi)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(N_rosa<span class="sc">-</span>N_sabi)<span class="sc">^</span><span class="dv">2</span>),</span>
-<span id="cb97-51"><a href="W4_6_solutions.html#cb97-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">meet =</span> distance <span class="sc">&lt;</span> <span class="dv">100</span></span>
-<span id="cb97-52"><a href="W4_6_solutions.html#cb97-52" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb97-53"><a href="W4_6_solutions.html#cb97-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-54"><a href="W4_6_solutions.html#cb97-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-55"><a href="W4_6_solutions.html#cb97-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-56"><a href="W4_6_solutions.html#cb97-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-57"><a href="W4_6_solutions.html#cb97-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-58"><a href="W4_6_solutions.html#cb97-58" aria-hidden="true" tabindex="-1"></a><span class="co"># task 5 ########################################################################</span></span>
-<span id="cb97-59"><a href="W4_6_solutions.html#cb97-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-60"><a href="W4_6_solutions.html#cb97-60" aria-hidden="true" tabindex="-1"></a>wildschwein_meet <span class="ot">&lt;-</span> wildschwein_join <span class="sc">%&gt;%</span></span>
-<span id="cb97-61"><a href="W4_6_solutions.html#cb97-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(meet)</span>
-<span id="cb97-62"><a href="W4_6_solutions.html#cb97-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-63"><a href="W4_6_solutions.html#cb97-63" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wildschwein_meet) <span class="sc">+</span></span>
-<span id="cb97-64"><a href="W4_6_solutions.html#cb97-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sabi, <span class="fu">aes</span>(E, N, <span class="at">colour =</span> <span class="st">&quot;sabi&quot;</span>),<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb97-65"><a href="W4_6_solutions.html#cb97-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> rosa, <span class="fu">aes</span>(E, N, <span class="at">colour =</span> <span class="st">&quot;rosa&quot;</span>),<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb97-66"><a href="W4_6_solutions.html#cb97-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> E_sabi,<span class="at">y =</span> N_sabi, <span class="at">fill =</span> <span class="st">&quot;sabi&quot;</span>),<span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb97-67"><a href="W4_6_solutions.html#cb97-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(E_rosa, N_rosa, <span class="at">fill =</span> <span class="st">&quot;rosa&quot;</span>), <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb97-68"><a href="W4_6_solutions.html#cb97-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Regular Locations&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Meets&quot;</span>) <span class="sc">+</span></span>
-<span id="cb97-69"><a href="W4_6_solutions.html#cb97-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2570000</span>,<span class="dv">2571000</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1204500</span>,<span class="dv">1205500</span>))</span>
-<span id="cb97-70"><a href="W4_6_solutions.html#cb97-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-71"><a href="W4_6_solutions.html#cb97-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-72"><a href="W4_6_solutions.html#cb97-72" aria-hidden="true" tabindex="-1"></a><span class="co"># task 6 ########################################################################</span></span>
-<span id="cb97-73"><a href="W4_6_solutions.html#cb97-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-74"><a href="W4_6_solutions.html#cb97-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-75"><a href="W4_6_solutions.html#cb97-75" aria-hidden="true" tabindex="-1"></a>meanmeetpoints <span class="ot">&lt;-</span> wildschwein_join <span class="sc">%&gt;%</span></span>
-<span id="cb97-76"><a href="W4_6_solutions.html#cb97-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(meet) <span class="sc">%&gt;%</span></span>
-<span id="cb97-77"><a href="W4_6_solutions.html#cb97-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb97-78"><a href="W4_6_solutions.html#cb97-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">E.mean =</span> (E_rosa<span class="sc">+</span>E_sabi)<span class="sc">/</span><span class="dv">2</span>,</span>
-<span id="cb97-79"><a href="W4_6_solutions.html#cb97-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">N.mean =</span> (N_rosa<span class="sc">+</span>N_sabi)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb97-80"><a href="W4_6_solutions.html#cb97-80" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb97-81"><a href="W4_6_solutions.html#cb97-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-82"><a href="W4_6_solutions.html#cb97-82" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb97-83"><a href="W4_6_solutions.html#cb97-83" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(wildschwein_join, <span class="at">x =</span> <span class="sc">~</span>E_rosa,<span class="at">y =</span> <span class="sc">~</span>N_rosa, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound,<span class="at">type =</span> <span class="st">&quot;scatter3d&quot;</span>, <span class="at">mode =</span> <span class="st">&quot;lines&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-84"><a href="W4_6_solutions.html#cb97-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(wildschwein_join, <span class="at">x =</span> <span class="sc">~</span>E_sabi,<span class="at">y =</span> <span class="sc">~</span>N_sabi, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
-<span id="cb97-85"><a href="W4_6_solutions.html#cb97-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(<span class="at">data =</span> meanmeetpoints, <span class="at">x =</span> <span class="sc">~</span>E.mean,<span class="at">y =</span> <span class="sc">~</span>N.mean, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
-<span id="cb97-86"><a href="W4_6_solutions.html#cb97-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;E&#39;</span>),</span>
-<span id="cb97-87"><a href="W4_6_solutions.html#cb97-87" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;N&#39;</span>),</span>
-<span id="cb97-88"><a href="W4_6_solutions.html#cb97-88" aria-hidden="true" tabindex="-1"></a>                      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Time&#39;</span>)))</span>
-<span id="cb97-89"><a href="W4_6_solutions.html#cb97-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-90"><a href="W4_6_solutions.html#cb97-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-91"><a href="W4_6_solutions.html#cb97-91" aria-hidden="true" tabindex="-1"></a>wildschwein_join <span class="sc">%&gt;%</span></span>
-<span id="cb97-92"><a href="W4_6_solutions.html#cb97-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DatetimeRound<span class="sc">&lt;</span><span class="st">&quot;2015-04-04&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-93"><a href="W4_6_solutions.html#cb97-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ly</span>(<span class="at">x =</span> <span class="sc">~</span>E_rosa,<span class="at">y =</span> <span class="sc">~</span>N_rosa, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound,<span class="at">type =</span> <span class="st">&quot;scatter3d&quot;</span>, <span class="at">mode =</span> <span class="st">&quot;lines&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-94"><a href="W4_6_solutions.html#cb97-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(wildschwein_join, <span class="at">x =</span> <span class="sc">~</span>E_sabi,<span class="at">y =</span> <span class="sc">~</span>N_sabi, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
-<span id="cb97-95"><a href="W4_6_solutions.html#cb97-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(<span class="at">data =</span> meanmeetpoints, <span class="at">x =</span> <span class="sc">~</span>E.mean,<span class="at">y =</span> <span class="sc">~</span>N.mean, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
-<span id="cb97-96"><a href="W4_6_solutions.html#cb97-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;E&#39;</span>),</span>
-<span id="cb97-97"><a href="W4_6_solutions.html#cb97-97" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;N&#39;</span>),</span>
-<span id="cb97-98"><a href="W4_6_solutions.html#cb97-98" aria-hidden="true" tabindex="-1"></a>                      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Time&#39;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="W4_6_solutions.html#cb104-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-2"><a href="W4_6_solutions.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># task 1 ########################################################################</span></span>
+<span id="cb104-3"><a href="W4_6_solutions.html#cb104-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-4"><a href="W4_6_solutions.html#cb104-4" aria-hidden="true" tabindex="-1"></a>euclid <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y,<span class="at">leadval =</span> <span class="dv">1</span>){</span>
+<span id="cb104-5"><a href="W4_6_solutions.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>((x<span class="sc">-</span><span class="fu">lead</span>(x,leadval))<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(y<span class="sc">-</span><span class="fu">lead</span>(y,leadval))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb104-6"><a href="W4_6_solutions.html#cb104-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb104-7"><a href="W4_6_solutions.html#cb104-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-8"><a href="W4_6_solutions.html#cb104-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-9"><a href="W4_6_solutions.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="co"># task 2 ########################################################################</span></span>
+<span id="cb104-10"><a href="W4_6_solutions.html#cb104-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-11"><a href="W4_6_solutions.html#cb104-11" aria-hidden="true" tabindex="-1"></a>wildschwein <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;00_Rawdata/wildschwein_BE_2056.csv&quot;</span>,<span class="st">&quot;,&quot;</span>)</span>
+<span id="cb104-12"><a href="W4_6_solutions.html#cb104-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-13"><a href="W4_6_solutions.html#cb104-13" aria-hidden="true" tabindex="-1"></a>wildschwein_filter <span class="ot">&lt;-</span> wildschwein <span class="sc">%&gt;%</span></span>
+<span id="cb104-14"><a href="W4_6_solutions.html#cb104-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DatetimeUTC <span class="sc">&gt;</span> <span class="st">&quot;2015-04-01&quot;</span>,</span>
+<span id="cb104-15"><a href="W4_6_solutions.html#cb104-15" aria-hidden="true" tabindex="-1"></a>         DatetimeUTC <span class="sc">&lt;</span> <span class="st">&quot;2015-04-15&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-16"><a href="W4_6_solutions.html#cb104-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TierName <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Rosa&quot;</span>, <span class="st">&quot;Sabi&quot;</span>))</span>
+<span id="cb104-17"><a href="W4_6_solutions.html#cb104-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-18"><a href="W4_6_solutions.html#cb104-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-19"><a href="W4_6_solutions.html#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="co"># task 3 ########################################################################</span></span>
+<span id="cb104-20"><a href="W4_6_solutions.html#cb104-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-21"><a href="W4_6_solutions.html#cb104-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-22"><a href="W4_6_solutions.html#cb104-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-23"><a href="W4_6_solutions.html#cb104-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-24"><a href="W4_6_solutions.html#cb104-24" aria-hidden="true" tabindex="-1"></a>wildschwein_filter <span class="ot">&lt;-</span> wildschwein_filter <span class="sc">%&gt;%</span></span>
+<span id="cb104-25"><a href="W4_6_solutions.html#cb104-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TierID) <span class="sc">%&gt;%</span></span>
+<span id="cb104-26"><a href="W4_6_solutions.html#cb104-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb104-27"><a href="W4_6_solutions.html#cb104-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">DatetimeRound =</span> lubridate<span class="sc">::</span><span class="fu">round_date</span>(DatetimeUTC,<span class="st">&quot;15 minutes&quot;</span>)</span>
+<span id="cb104-28"><a href="W4_6_solutions.html#cb104-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb104-29"><a href="W4_6_solutions.html#cb104-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-30"><a href="W4_6_solutions.html#cb104-30" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wildschwein_filter)</span>
+<span id="cb104-31"><a href="W4_6_solutions.html#cb104-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-32"><a href="W4_6_solutions.html#cb104-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-33"><a href="W4_6_solutions.html#cb104-33" aria-hidden="true" tabindex="-1"></a><span class="co"># task 4 ########################################################################</span></span>
+<span id="cb104-34"><a href="W4_6_solutions.html#cb104-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-35"><a href="W4_6_solutions.html#cb104-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb104-36"><a href="W4_6_solutions.html#cb104-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-37"><a href="W4_6_solutions.html#cb104-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-38"><a href="W4_6_solutions.html#cb104-38" aria-hidden="true" tabindex="-1"></a>sabi <span class="ot">&lt;-</span> wildschwein_filter <span class="sc">%&gt;%</span></span>
+<span id="cb104-39"><a href="W4_6_solutions.html#cb104-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">&quot;Sabi&quot;</span>)</span>
+<span id="cb104-40"><a href="W4_6_solutions.html#cb104-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-41"><a href="W4_6_solutions.html#cb104-41" aria-hidden="true" tabindex="-1"></a>rosa <span class="ot">&lt;-</span> wildschwein_filter <span class="sc">%&gt;%</span></span>
+<span id="cb104-42"><a href="W4_6_solutions.html#cb104-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TierName <span class="sc">==</span> <span class="st">&quot;Rosa&quot;</span>)</span>
+<span id="cb104-43"><a href="W4_6_solutions.html#cb104-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-44"><a href="W4_6_solutions.html#cb104-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-45"><a href="W4_6_solutions.html#cb104-45" aria-hidden="true" tabindex="-1"></a>wildschwein_join <span class="ot">&lt;-</span> <span class="fu">full_join</span>(sabi, rosa, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;DatetimeRound&quot;</span>), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;_sabi&quot;</span>,<span class="st">&quot;_rosa&quot;</span>))</span>
+<span id="cb104-46"><a href="W4_6_solutions.html#cb104-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-47"><a href="W4_6_solutions.html#cb104-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-48"><a href="W4_6_solutions.html#cb104-48" aria-hidden="true" tabindex="-1"></a>wildschwein_join <span class="ot">&lt;-</span> wildschwein_join <span class="sc">%&gt;%</span></span>
+<span id="cb104-49"><a href="W4_6_solutions.html#cb104-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb104-50"><a href="W4_6_solutions.html#cb104-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance =</span> <span class="fu">sqrt</span>((E_rosa<span class="sc">-</span>E_sabi)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(N_rosa<span class="sc">-</span>N_sabi)<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb104-51"><a href="W4_6_solutions.html#cb104-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">meet =</span> distance <span class="sc">&lt;</span> <span class="dv">100</span></span>
+<span id="cb104-52"><a href="W4_6_solutions.html#cb104-52" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb104-53"><a href="W4_6_solutions.html#cb104-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-54"><a href="W4_6_solutions.html#cb104-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-55"><a href="W4_6_solutions.html#cb104-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-56"><a href="W4_6_solutions.html#cb104-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-57"><a href="W4_6_solutions.html#cb104-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-58"><a href="W4_6_solutions.html#cb104-58" aria-hidden="true" tabindex="-1"></a><span class="co"># task 5 ########################################################################</span></span>
+<span id="cb104-59"><a href="W4_6_solutions.html#cb104-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-60"><a href="W4_6_solutions.html#cb104-60" aria-hidden="true" tabindex="-1"></a>wildschwein_meet <span class="ot">&lt;-</span> wildschwein_join <span class="sc">%&gt;%</span></span>
+<span id="cb104-61"><a href="W4_6_solutions.html#cb104-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(meet)</span>
+<span id="cb104-62"><a href="W4_6_solutions.html#cb104-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-63"><a href="W4_6_solutions.html#cb104-63" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wildschwein_meet) <span class="sc">+</span></span>
+<span id="cb104-64"><a href="W4_6_solutions.html#cb104-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sabi, <span class="fu">aes</span>(E, N, <span class="at">colour =</span> <span class="st">&quot;sabi&quot;</span>),<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb104-65"><a href="W4_6_solutions.html#cb104-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> rosa, <span class="fu">aes</span>(E, N, <span class="at">colour =</span> <span class="st">&quot;rosa&quot;</span>),<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb104-66"><a href="W4_6_solutions.html#cb104-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> E_sabi,<span class="at">y =</span> N_sabi, <span class="at">fill =</span> <span class="st">&quot;sabi&quot;</span>),<span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb104-67"><a href="W4_6_solutions.html#cb104-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(E_rosa, N_rosa, <span class="at">fill =</span> <span class="st">&quot;rosa&quot;</span>), <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb104-68"><a href="W4_6_solutions.html#cb104-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Regular Locations&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Meets&quot;</span>) <span class="sc">+</span></span>
+<span id="cb104-69"><a href="W4_6_solutions.html#cb104-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2570000</span>,<span class="dv">2571000</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1204500</span>,<span class="dv">1205500</span>))</span>
+<span id="cb104-70"><a href="W4_6_solutions.html#cb104-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-71"><a href="W4_6_solutions.html#cb104-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-72"><a href="W4_6_solutions.html#cb104-72" aria-hidden="true" tabindex="-1"></a><span class="co"># task 6 ########################################################################</span></span>
+<span id="cb104-73"><a href="W4_6_solutions.html#cb104-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-74"><a href="W4_6_solutions.html#cb104-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-75"><a href="W4_6_solutions.html#cb104-75" aria-hidden="true" tabindex="-1"></a>meanmeetpoints <span class="ot">&lt;-</span> wildschwein_join <span class="sc">%&gt;%</span></span>
+<span id="cb104-76"><a href="W4_6_solutions.html#cb104-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(meet) <span class="sc">%&gt;%</span></span>
+<span id="cb104-77"><a href="W4_6_solutions.html#cb104-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb104-78"><a href="W4_6_solutions.html#cb104-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">E.mean =</span> (E_rosa<span class="sc">+</span>E_sabi)<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb104-79"><a href="W4_6_solutions.html#cb104-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">N.mean =</span> (N_rosa<span class="sc">+</span>N_sabi)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb104-80"><a href="W4_6_solutions.html#cb104-80" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb104-81"><a href="W4_6_solutions.html#cb104-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-82"><a href="W4_6_solutions.html#cb104-82" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb104-83"><a href="W4_6_solutions.html#cb104-83" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(wildschwein_join, <span class="at">x =</span> <span class="sc">~</span>E_rosa,<span class="at">y =</span> <span class="sc">~</span>N_rosa, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound,<span class="at">type =</span> <span class="st">&quot;scatter3d&quot;</span>, <span class="at">mode =</span> <span class="st">&quot;lines&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-84"><a href="W4_6_solutions.html#cb104-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(wildschwein_join, <span class="at">x =</span> <span class="sc">~</span>E_sabi,<span class="at">y =</span> <span class="sc">~</span>N_sabi, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
+<span id="cb104-85"><a href="W4_6_solutions.html#cb104-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(<span class="at">data =</span> meanmeetpoints, <span class="at">x =</span> <span class="sc">~</span>E.mean,<span class="at">y =</span> <span class="sc">~</span>N.mean, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
+<span id="cb104-86"><a href="W4_6_solutions.html#cb104-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;E&#39;</span>),</span>
+<span id="cb104-87"><a href="W4_6_solutions.html#cb104-87" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;N&#39;</span>),</span>
+<span id="cb104-88"><a href="W4_6_solutions.html#cb104-88" aria-hidden="true" tabindex="-1"></a>                      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Time&#39;</span>)))</span>
+<span id="cb104-89"><a href="W4_6_solutions.html#cb104-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-90"><a href="W4_6_solutions.html#cb104-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-91"><a href="W4_6_solutions.html#cb104-91" aria-hidden="true" tabindex="-1"></a>wildschwein_join <span class="sc">%&gt;%</span></span>
+<span id="cb104-92"><a href="W4_6_solutions.html#cb104-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DatetimeRound<span class="sc">&lt;</span><span class="st">&quot;2015-04-04&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-93"><a href="W4_6_solutions.html#cb104-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ly</span>(<span class="at">x =</span> <span class="sc">~</span>E_rosa,<span class="at">y =</span> <span class="sc">~</span>N_rosa, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound,<span class="at">type =</span> <span class="st">&quot;scatter3d&quot;</span>, <span class="at">mode =</span> <span class="st">&quot;lines&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-94"><a href="W4_6_solutions.html#cb104-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(wildschwein_join, <span class="at">x =</span> <span class="sc">~</span>E_sabi,<span class="at">y =</span> <span class="sc">~</span>N_sabi, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
+<span id="cb104-95"><a href="W4_6_solutions.html#cb104-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(<span class="at">data =</span> meanmeetpoints, <span class="at">x =</span> <span class="sc">~</span>E.mean,<span class="at">y =</span> <span class="sc">~</span>N.mean, <span class="at">z =</span> <span class="sc">~</span>DatetimeRound) <span class="sc">%&gt;%</span></span>
+<span id="cb104-96"><a href="W4_6_solutions.html#cb104-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;E&#39;</span>),</span>
+<span id="cb104-97"><a href="W4_6_solutions.html#cb104-97" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;N&#39;</span>),</span>
+<span id="cb104-98"><a href="W4_6_solutions.html#cb104-98" aria-hidden="true" tabindex="-1"></a>                      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&#39;Time&#39;</span>)))</span></code></pre></div>
 
 </div>
 </div>

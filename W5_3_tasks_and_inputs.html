@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="W5_2_preparation.html"/>
-<link rel="next" href="90_references.html"/>
+<link rel="next" href="W5_4_solutions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -257,6 +257,7 @@ div.csl-indent {
 <li><a href="W4_4_tasks_and_inputs.html#task-5-visualize-data">Task 5: Visualize data<span></span></a></li>
 <li><a href="W4_4_tasks_and_inputs.html#task-6-optional-visualize-data-as-timecube-with-plotly">Task 6 (optional): Visualize data as timecube with <code>plotly</code><span></span></a></li>
 </ul></li>
+<li><a href="W4_6_solutions.html#solutions-3">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="W5_1_exercise.html#exercise-5">Exercise 5<span></span></a>
 <ul>
@@ -269,6 +270,7 @@ div.csl-indent {
 <li><a href="W5_3_tasks_and_inputs.html#task-4-import-and-visualize-vegetationindex-raster-data">Task 4: Import and visualize vegetationindex (raster data)<span></span></a></li>
 <li><a href="W5_3_tasks_and_inputs.html#task-5-annotate-trajectories-from-raster-data">Task 5: Annotate Trajectories from raster data<span></span></a></li>
 </ul></li>
+<li><a href="W5_4_solutions.html#solutions-4">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="90_references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -294,16 +296,16 @@ div.csl-indent {
 <div id="tasks-and-inputs-3" class="section level2 hasAnchor">
 <h2>Tasks and Inputs<a href="W5_3_tasks_and_inputs.html#tasks-and-inputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open your RStudio Project <a href="W5_2_preparation.html#w5-preperation">which you prepared</a> from this week. Create a new RScript and import the libraries we need for this week. Import your wildboar dataset <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/wildschwein_BE_2056.csv">wildschwein_BE_2056.csv</a> as an <code>sf</code> object</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="W5_3_tasks_and_inputs.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb104-2"><a href="W5_3_tasks_and_inputs.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb104-3"><a href="W5_3_tasks_and_inputs.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb104-4"><a href="W5_3_tasks_and_inputs.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb104-5"><a href="W5_3_tasks_and_inputs.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb104-6"><a href="W5_3_tasks_and_inputs.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb104-7"><a href="W5_3_tasks_and_inputs.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb104-8"><a href="W5_3_tasks_and_inputs.html#cb104-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-9"><a href="W5_3_tasks_and_inputs.html#cb104-9" aria-hidden="true" tabindex="-1"></a>wildschwein_BE <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;00_Rawdata/wildschwein_BE_2056.csv&quot;</span>,<span class="st">&quot;,&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb104-10"><a href="W5_3_tasks_and_inputs.html#cb104-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;E&quot;</span>, <span class="st">&quot;N&quot;</span>), <span class="at">crs =</span> <span class="dv">2056</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="W5_3_tasks_and_inputs.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb105-2"><a href="W5_3_tasks_and_inputs.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb105-3"><a href="W5_3_tasks_and_inputs.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb105-4"><a href="W5_3_tasks_and_inputs.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb105-5"><a href="W5_3_tasks_and_inputs.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb105-6"><a href="W5_3_tasks_and_inputs.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb105-7"><a href="W5_3_tasks_and_inputs.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb105-8"><a href="W5_3_tasks_and_inputs.html#cb105-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-9"><a href="W5_3_tasks_and_inputs.html#cb105-9" aria-hidden="true" tabindex="-1"></a>wildschwein_BE <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;00_Rawdata/wildschwein_BE_2056.csv&quot;</span>,<span class="st">&quot;,&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-10"><a href="W5_3_tasks_and_inputs.html#cb105-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;E&quot;</span>, <span class="st">&quot;N&quot;</span>), <span class="at">crs =</span> <span class="dv">2056</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Download the dataset <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/Feldaufnahmen_Fanel.gpkg">Feldaufnahmen_Fanel.gpkg</a> and save it to your project folder. This is a vector dataset stored in the filetype <em>Geopackage</em>, which is similar to a <em>Shapefile</em>, with some advantages (see the website <a href="http://switchfromshapefile.org/">shapefile must die</a>).</p>
 <p>Also download the dataset <a href="https://github.com/ComputationalMovementAnalysis/FS22/raw/main/00_Rawdata/vegetationshoehe_LFI.tif">vegetationshoehe_LFI.tif</a>. This is a “raster” dataset stored in a Geotiff, similar to the map we imported in <a href="W1_5_tasks_and_inputs.html#w1-importing-raster">week 1</a>. Also store this file in your project folder and commit these to your repo.</p>
 <div id="tasks-1-import-and-visualize-spatial-data" class="section level3 hasAnchor">
@@ -368,7 +370,6 @@ div.csl-indent {
 
 </div>
 </div>
-</div>
 <script src="https://utteranc.es/client.js"
         repo="ComputationalMovementAnalysis/utterances"
         issue-term="pathname"
@@ -382,7 +383,7 @@ div.csl-indent {
         </div>
       </div>
 <a href="W5_2_preparation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="90_references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="W5_4_solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

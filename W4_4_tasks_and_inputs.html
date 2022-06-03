@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="W4_3_preparation.html"/>
-<link rel="next" href="W5_1_exercise.html"/>
+<link rel="next" href="W4_6_solutions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -257,6 +257,7 @@ div.csl-indent {
 <li><a href="W4_4_tasks_and_inputs.html#task-5-visualize-data">Task 5: Visualize data<span></span></a></li>
 <li><a href="W4_4_tasks_and_inputs.html#task-6-optional-visualize-data-as-timecube-with-plotly">Task 6 (optional): Visualize data as timecube with <code>plotly</code><span></span></a></li>
 </ul></li>
+<li><a href="W4_6_solutions.html#solutions-3">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="W5_1_exercise.html#exercise-5">Exercise 5<span></span></a>
 <ul>
@@ -269,6 +270,7 @@ div.csl-indent {
 <li><a href="W5_3_tasks_and_inputs.html#task-4-import-and-visualize-vegetationindex-raster-data">Task 4: Import and visualize vegetationindex (raster data)<span></span></a></li>
 <li><a href="W5_3_tasks_and_inputs.html#task-5-annotate-trajectories-from-raster-data">Task 5: Annotate Trajectories from raster data<span></span></a></li>
 </ul></li>
+<li><a href="W5_4_solutions.html#solutions-4">Solutions<span></span></a></li>
 </ul></li>
 <li><a href="90_references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -319,10 +321,10 @@ div.csl-indent {
 <span id="cb99-3"><a href="W4_4_tasks_and_inputs.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb99-4"><a href="W4_4_tasks_and_inputs.html#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-5"><a href="W4_4_tasks_and_inputs.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="at">birthday =</span> <span class="st">&quot;1997-04-23&quot;</span>, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>)</span>
-<span id="cb99-6"><a href="W4_4_tasks_and_inputs.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9170.595 days</span></span></code></pre></div>
+<span id="cb99-6"><a href="W4_4_tasks_and_inputs.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9172.46 days</span></span></code></pre></div>
 <p>As we already know from using other functions, if we declare our variables in the order that we initially listed them, we do not need to specify the parameters (no need of <code>birthday =</code> and <code>units =</code>).</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="W4_4_tasks_and_inputs.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>, <span class="st">&quot;days&quot;</span>)</span>
-<span id="cb100-2"><a href="W4_4_tasks_and_inputs.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9170.595 days</span></span></code></pre></div>
+<span id="cb100-2"><a href="W4_4_tasks_and_inputs.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9172.46 days</span></span></code></pre></div>
 <p>If we want any of our parameters to have default value, we can assign an initial value to the parameter when declaring the variables within the round brackets.</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="W4_4_tasks_and_inputs.html#cb101-1" aria-hidden="true" tabindex="-1"></a>my_age <span class="ot">&lt;-</span> <span class="cf">function</span>(birthday, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>){</span>
 <span id="cb101-2"><a href="W4_4_tasks_and_inputs.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(),birthday, <span class="at">units =</span> units)</span>
@@ -330,11 +332,11 @@ div.csl-indent {
 <span id="cb101-4"><a href="W4_4_tasks_and_inputs.html#cb101-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-5"><a href="W4_4_tasks_and_inputs.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if not stated otherwise, our function uses the unit &quot;days&quot;</span></span>
 <span id="cb101-6"><a href="W4_4_tasks_and_inputs.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>)</span>
-<span id="cb101-7"><a href="W4_4_tasks_and_inputs.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9170.595 days</span></span>
+<span id="cb101-7"><a href="W4_4_tasks_and_inputs.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 9172.46 days</span></span>
 <span id="cb101-8"><a href="W4_4_tasks_and_inputs.html#cb101-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-9"><a href="W4_4_tasks_and_inputs.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We can still overwrite units</span></span>
 <span id="cb101-10"><a href="W4_4_tasks_and_inputs.html#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="fu">my_age</span>(<span class="st">&quot;1997-04-23&quot;</span>, <span class="st">&quot;hours&quot;</span>)</span>
-<span id="cb101-11"><a href="W4_4_tasks_and_inputs.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 220094.3 hours</span></span></code></pre></div>
+<span id="cb101-11"><a href="W4_4_tasks_and_inputs.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 220139 hours</span></span></code></pre></div>
 <p>All you need to do now is run execute the function deceleration (<code>myage &lt;- function...</code> etc.) at the beginning of your script, and you can use the function for your entire R session. Tip: Always try to make your function self sufficient: Don’t call variables that were created outside the function call.</p>
 <div id="task-1-write-your-own-functions" class="section level3 hasAnchor">
 <h3>Task 1: Write your own functions<a href="W4_4_tasks_and_inputs.html#task-1-write-your-own-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -395,7 +397,6 @@ div.csl-indent {
 
 </div>
 </div>
-</div>
 <div class="footnotes">
 <hr />
 <ol start="5">
@@ -415,7 +416,7 @@ div.csl-indent {
         </div>
       </div>
 <a href="W4_3_preparation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="W5_1_exercise.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="W4_6_solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
